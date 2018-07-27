@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 
 public class ComposeMessage extends MainMailPage{
 
+    //локаторы бокового меню gmail
     @FindBy(xpath = "//div[text()='Написать']")
     private WebElement composeEmail;
 
@@ -20,11 +21,6 @@ public class ComposeMessage extends MainMailPage{
 
     @FindBy(xpath = "//img[@aria-label='Сохранить и закрыть']")
     private WebElement emailCloseAndSave;
-
-         /*   wait.until(ExpectedConditions.elementToBeClickable(By.name("to")));
-        driver.findElement(By.name("to")).sendKeys("omg@sohard.com");
-        driver.findElement(By.name("subjectbox")).sendKeys("Lorem ipsum dolor sit amet");
-        driver.findElement(By.xpath("//div[@aria-label='Тело письма']")).sendKeys("This text is for testing purposes");*/
 
     public ComposeMessage(WebDriver driver) {
         super(driver);

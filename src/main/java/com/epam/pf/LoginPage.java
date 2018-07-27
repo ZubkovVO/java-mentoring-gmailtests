@@ -27,7 +27,6 @@ public class LoginPage extends AbstractPage {
 
         loginInput.sendKeys(query);
         return this;
-
     }
 
     public PasswordPage pressNextButton(){

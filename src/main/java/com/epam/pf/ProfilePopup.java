@@ -12,11 +12,6 @@ public class ProfilePopup extends AbstractPage{
     @FindBy(xpath = "//a[text()='Выйти']")
     private WebElement signOut;
 
-/*            driver.findElement(By.xpath("//a[@href='https://accounts.google.com/SignOutOptions?hl=ru&continue=https://mail.google.com/mail&service=mail']")).click();
-        Thread.sleep(2000);
-        driver.findElement(By.xpath("//a[text()='Выйти']")).click();
-*/
-
     public ProfilePopup(WebDriver driver) {
         super(driver);
     }
@@ -25,14 +20,12 @@ public class ProfilePopup extends AbstractPage{
         waitForElementVisible(signOutOptions);
         signOutOptions.click();
         return this;
-
     }
 
     public ProfilePopup signOut(){
         waitForElementVisible(signOut);
         signOut.click();
         return this;
-
     }
 
 

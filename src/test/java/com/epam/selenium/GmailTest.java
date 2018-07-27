@@ -1,4 +1,4 @@
-package selenium.epam.com;
+package com.epam.selenium;
 
 import com.epam.pf.*;
 import org.openqa.selenium.By;

@@ -21,7 +21,6 @@ public class PasswordPage extends AbstractPage {
         waitForElementVisible(pwdInput);
         pwdInput.sendKeys(query);
         return this;
-
     }
 
     public MainMailPage pressNextButton(){
