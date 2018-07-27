@@ -19,12 +19,12 @@ public class DraftPage extends MainMailPage {
         super(driver);
     }
 
-    public DraftPage emailTextFind(String textCheck){
-        By LOCATOR = By.xpath("//span[text()='"+textCheck+"']");
-        waitForElementVisibleBy(LOCATOR);
+    public DraftPage emailTextFind(String textCheck) {
+        By textLocator = By.xpath("//span[text()='" + textCheck + "']");
+        waitForElementVisibleBy(textLocator);
+        driver.findElement(textLocator).click();
         return this;
     }
-
 
 
 

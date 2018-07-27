@@ -1,5 +1,6 @@
 package selenium.epam.com;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
@@ -24,17 +25,26 @@ public class GmailTest {
 
     @Test(description = "Login test")
     public void gmailLoginTest() {
+        String emailTextString = "Some text";
+        String emailSubjectString = "Hello world!";
+        String sendEmailToString = "newTestAddressee@gmail.com";
+
         new LoginPage(driver).openPage().fillLoginInput("selenium.tester80@gmail.com").pressNextButton();
         new PasswordPage(driver).fillPasswordInput("Administratum41").pressNextButton();
         //Assert.assertTrue();
-        String emailTextString = "Some text";
-        new ComposeMessage(driver).findCompose().sendEmailTo("newTestAddressee@gmail.com").emailSubject("Hello world!").emailText(emailTextString);
-        new ComposeMessage(driver).emailClose();
-        new MainMailPage(driver).openSent();
-        new MainMailPage(driver).openDrafts();
-       // new ProfilePopup(driver).signOutOptions().signOut();
 
+        new ComposeMessage(driver).findCompose().sendEmailTo(sendEmailToString).emailSubject(emailSubjectString).emailText(emailTextString);
+        new ComposeMessage(driver).emailClose();
+        new MainMailPage(driver).openDrafts();
         new DraftPage(driver).emailTextFind(emailTextString);
+        //Assert.assertTrue();
+        Assert.assertTrue(driver.findElements(By.xpath("//span[@email='"+sendEmailToString+"']")).size()>0);
+        Assert.assertTrue(driver.findElements(By.xpath("//div[text()='"+sendEmailToString+"']")).size()>0);
+        Assert.assertEquals(driver.findElement(By.xpath("//div[@aria-label='Тело письма']")).getText(),emailTextString);
+        new MainMailPage(driver).openSent();
+        new ProfilePopup(driver).signOutOptions().signOut();
+
+
 
 
 
