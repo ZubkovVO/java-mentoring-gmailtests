@@ -1,4 +1,4 @@
-package po.epam.com;
+package com.epam.po;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
