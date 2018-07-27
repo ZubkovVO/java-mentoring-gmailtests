@@ -1,5 +1,6 @@
 package selenium.epam.com;
 
+import com.epam.pf.*;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -8,9 +9,6 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import org.testng.reporters.jq.Main;
-import pf.epam.com.*;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
