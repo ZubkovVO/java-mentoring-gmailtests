@@ -22,6 +22,9 @@ public class ComposeMessage extends MainMailPage{
     @FindBy(xpath = "//img[@aria-label='Сохранить и закрыть']")
     private WebElement emailCloseAndSave;
 
+    @FindBy(xpath = "//div[contains(@aria-label,'Отправить')]")
+    private WebElement emailSend;
+
     public ComposeMessage(WebDriver driver) {
         super(driver);
     }
@@ -48,6 +51,12 @@ public class ComposeMessage extends MainMailPage{
     public ComposeMessage findCompose() {
         waitForElementVisible(composeEmail);
         composeEmail.click();
+        return this;
+    }
+
+    public ComposeMessage sendEmail(){
+        waitForElementClickable(emailSend);
+        emailSend.click();
         return this;
     }
 
