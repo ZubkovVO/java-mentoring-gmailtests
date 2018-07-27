@@ -26,7 +26,7 @@ public class GmailTest {
     }
 
     @Test(description = "Login test")
-    public void gmailLoginTest() throws FileNotFoundException {
+    public void gmailLoginTest() throws FileNotFoundException, InterruptedException {
         String emailTextString = "Some text";
         String emailSubjectString = "Hello world!";
         String sendEmailToString = "newTestAddressee@gmail.com";
@@ -41,6 +41,7 @@ public class GmailTest {
         new MainMailPage(driver).openDrafts();
         new DraftPage(driver).emailTextFind(emailTextString);
         //Assert.assertTrue();
+        Thread.sleep(3000);
         Assert.assertTrue(driver.findElements(By.xpath("//span[@email='"+sendEmailToString+"']")).size()>0);
         Assert.assertTrue(driver.findElements(By.xpath("//div[text()='"+emailSubjectString+"']")).size()>0);
         Assert.assertEquals(driver.findElement(By.xpath("//div[@aria-label='Тело письма']")).getText(),emailTextString);

@@ -7,7 +7,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-public class AbstractPage {
+abstract class AbstractPage {
     protected WebDriver driver;
     private static final int WAIT_FOR_ELEMENT_SECONDS = 60; //Машина на которой велась разработка - медленная
 
