@@ -30,7 +30,7 @@ public class GmailTest{
     }
 
     @Test(description = "Login test")
-    public void gmailLoginTest() throws FileNotFoundException, InterruptedException {
+    public void testGmailLogin() throws FileNotFoundException {
 
         String password = new Scanner(new File("/C:/Pwd/pwd.txt")).useDelimiter("\\Z").next();
         new LoginPage(driver).openPage().fillLoginInput("selenium.tester80@gmail.com").pressNextButton();
@@ -38,8 +38,8 @@ public class GmailTest{
         //Assert.assertTrue();
     }
 
-    @Test(description = "Compose Email",dependsOnMethods = {"gmailLoginTest"})
-    public void testGmailSend() throws InterruptedException {
+    @Test(description = "Compose Email",dependsOnMethods = {"testGmailLogin"})
+    public void testGmailSend() {
         new ComposeMessage(driver).findCompose().sendEmailTo(sendEmailToString).emailSubject(emailSubjectString).emailText(emailTextString);
         new ComposeMessage(driver).emailClose();
     }
