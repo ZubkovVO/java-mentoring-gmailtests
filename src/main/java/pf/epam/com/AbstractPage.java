@@ -20,6 +20,10 @@ public class AbstractPage {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.visibilityOfAllElements(locator));
     }
 
+    protected void waitForElementVisibleBy(By locator){
+        new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+    }
+
     /*protected void waitForElementPresent(WebElement locator){
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
     }*/

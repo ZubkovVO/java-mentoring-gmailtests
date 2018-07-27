@@ -1,5 +1,6 @@
 package pf.epam.com;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,15 +9,19 @@ import sun.applet.Main;
 public class DraftPage extends MainMailPage {
 
 
-    @FindBy(xpath = "//span[text()='This text is for testing purposes']")
-    private WebElement emailText;
+
+   /* @FindBy(xpath = "//span[text()='This text is for testing purposes']")
+    private WebElement emailText;*/
+
+
 
     public DraftPage(WebDriver driver) {
         super(driver);
     }
 
-    public DraftPage emailTextCheck(){
-        waitForElementVisible(emailText);
+    public DraftPage emailTextFind(String textCheck){
+        By LOCATOR = By.xpath("//span[text()='"+textCheck+"']");
+        waitForElementVisibleBy(LOCATOR);
         return this;
     }
 

@@ -7,10 +7,8 @@ import org.testng.Assert;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-import pf.epam.com.ComposeMessage;
-import pf.epam.com.LoginPage;
-import pf.epam.com.MainMailPage;
-import pf.epam.com.PasswordPage;
+import org.testng.reporters.jq.Main;
+import pf.epam.com.*;
 
 public class GmailTest {
     private WebDriver driver;
@@ -29,8 +27,16 @@ public class GmailTest {
         new LoginPage(driver).openPage().fillLoginInput("selenium.tester80@gmail.com").pressNextButton();
         new PasswordPage(driver).fillPasswordInput("Administratum41").pressNextButton();
         //Assert.assertTrue();
-        new ComposeMessage(driver).findCompose().sendEmailTo("newTestAddressee@gmail.com").emailSubject("Hello world!").emailText("Some text");
+        String emailTextString = "Some text";
+        new ComposeMessage(driver).findCompose().sendEmailTo("newTestAddressee@gmail.com").emailSubject("Hello world!").emailText(emailTextString);
         new ComposeMessage(driver).emailClose();
+        new MainMailPage(driver).openSent();
+        new MainMailPage(driver).openDrafts();
+       // new ProfilePopup(driver).signOutOptions().signOut();
+
+        new DraftPage(driver).emailTextFind(emailTextString);
+
+
 
     }
 
