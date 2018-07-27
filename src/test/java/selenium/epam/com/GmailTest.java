@@ -11,6 +11,10 @@ import org.testng.annotations.Test;
 import org.testng.reporters.jq.Main;
 import pf.epam.com.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+
 public class GmailTest {
     private WebDriver driver;
 
@@ -24,13 +28,14 @@ public class GmailTest {
     }
 
     @Test(description = "Login test")
-    public void gmailLoginTest() {
+    public void gmailLoginTest() throws FileNotFoundException {
         String emailTextString = "Some text";
         String emailSubjectString = "Hello world!";
         String sendEmailToString = "newTestAddressee@gmail.com";
+        String password = new Scanner(new File("/C:/Pwd/pwd.txt")).useDelimiter("\\Z").next();
 
         new LoginPage(driver).openPage().fillLoginInput("selenium.tester80@gmail.com").pressNextButton();
-        new PasswordPage(driver).fillPasswordInput("Administratum41").pressNextButton();
+        new PasswordPage(driver).fillPasswordInput(password).pressNextButton();
         //Assert.assertTrue();
 
         new ComposeMessage(driver).findCompose().sendEmailTo(sendEmailToString).emailSubject(emailSubjectString).emailText(emailTextString);
@@ -39,15 +44,10 @@ public class GmailTest {
         new DraftPage(driver).emailTextFind(emailTextString);
         //Assert.assertTrue();
         Assert.assertTrue(driver.findElements(By.xpath("//span[@email='"+sendEmailToString+"']")).size()>0);
-        Assert.assertTrue(driver.findElements(By.xpath("//div[text()='"+sendEmailToString+"']")).size()>0);
+        Assert.assertTrue(driver.findElements(By.xpath("//div[text()='"+emailSubjectString+"']")).size()>0);
         Assert.assertEquals(driver.findElement(By.xpath("//div[@aria-label='Тело письма']")).getText(),emailTextString);
         new MainMailPage(driver).openSent();
         new ProfilePopup(driver).signOutOptions().signOut();
-
-
-
-
-
     }
 
     /*@Test(description = "Compose draft")

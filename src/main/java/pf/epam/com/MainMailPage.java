@@ -7,13 +7,16 @@ import org.openqa.selenium.support.FindBy;
 
 public class MainMailPage extends AbstractPage {
 
-    @FindBy(css = "a[href='https://mail.google.com/mail/#inbox'")
+    @FindBy(css = "a[href*='inbox']")
     private WebElement gmailInbox;
 
-    @FindBy(css = "a[href='https://mail.google.com/mail/#drafts'")
+    @FindBy(css = "a[href*='drafts']")
     private WebElement gmailDrafts;
 
-    @FindBy(css = "a[href='https://mail.google.com/mail/#sent'")
+    /*@FindBy(xpath = "//a[contains(@href,'/#drafts')]")
+    private WebElement gmailDrafts;
+*/
+    @FindBy(css = "a[href*='sent']")
     private WebElement gmailSent;
 
     public MainMailPage(WebDriver driver) {
