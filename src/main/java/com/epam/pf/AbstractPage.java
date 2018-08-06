@@ -20,8 +20,14 @@ abstract class AbstractPage {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.visibilityOfAllElements(locator));
     }
 
-    protected void waitForElementVisibleBy(By locator){
+    //пришлось сделать public для возможности использовать внутри теста GmailTest
+    public void waitForElementVisibleBy(By locator){
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+
+    }
+
+    public void waitForElementInvisibilty(By locator){
+        new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.invisibilityOfElementLocated(locator));
     }
 
     /* //На данные момент непонятно как обработать этот код с использованием WebElement

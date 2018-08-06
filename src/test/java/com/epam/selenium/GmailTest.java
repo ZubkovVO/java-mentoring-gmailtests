@@ -36,16 +36,25 @@ public class GmailTest{
         String password = new Scanner(new File("/C:/Pwd/pwd.txt")).useDelimiter("\\Z").next();
         new LoginPage(driver).openPage().fillLoginInput("selenium.tester80@gmail.com").pressNextButton();
         new PasswordPage(driver).fillPasswordInput(password).pressNextButton();
-        Thread.sleep(10000); //пока не придумал чем заменить
+        MainMailPage mainMailPage = new MainMailPage(driver);
+
+        //не уверен насчет логичности реализации
+        mainMailPage.waitForElementVisibleBy(By.cssSelector("a[aria-label*='selenium.tester80@gmail.com']"));
+
+        //Thread.sleep(10000); //пока не придумал чем заменить
         Assert.assertTrue(driver.findElements(By.cssSelector("a[aria-label*='selenium.tester80@gmail.com']")).size()>0);
 
     }
 
     @Test(description = "Compose Email",dependsOnMethods = {"testGmailLogin"})
     public void testGmailSend() throws InterruptedException {
-        new ComposeMessage(driver).findCompose().sendEmailTo(sendEmailToString).emailSubject(emailSubjectString).emailText(emailTextString);
-        new ComposeMessage(driver).emailClose();
-        //Thread.sleep(2000);  //пока не придумал чем заменить
+        ComposeMessage composeMessage = new ComposeMessage(driver).findCompose().sendEmailTo(sendEmailToString).emailSubject(emailSubjectString).emailText(emailTextString);
+        composeMessage.emailClose();
+        /*
+        Попытался использовать такой вариант, но почему-то не отрабатывает, временно оставил thread sleep
+        composeMessage.waitForElementInvisibilty(By.xpath("//div[contains(@aria-label,'Отправить')]"));
+         */
+        Thread.sleep(2000);  //пока не придумал чем заменить
         //new WebDriverWait(driver, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//div[contains(@aria-label,'Отправить')]")));
         Assert.assertFalse(driver.findElements(By.xpath("//div[contains(@aria-label,'Отправить')]")).size()>0);
     }
