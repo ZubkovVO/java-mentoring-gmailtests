@@ -12,10 +12,6 @@ public class ProfilePopup extends AbstractPage{
     @FindBy(xpath = "//a[text()='Выйти']")
     private WebElement signOut;
 
-    public ProfilePopup(WebDriver driver) {
-        super(driver);
-    }
-
     public ProfilePopup signOutOptions(){
         waitForElementVisible(signOutOptions);
         signOutOptions.click();

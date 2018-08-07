@@ -24,6 +24,6 @@ public class LoginPage extends AbstractPage {
 
     public PasswordPage pressNextButton(){
         nextButton.click();
-        return new PasswordPage(driver);
+        return new PasswordPage();
     }
 }
