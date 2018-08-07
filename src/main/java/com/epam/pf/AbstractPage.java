@@ -9,7 +9,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 abstract class AbstractPage {
     protected WebDriver driver;
-    private static final int WAIT_FOR_ELEMENT_SECONDS = 60; //Машина на которой велась разработка - медленная
+    private static final int WAIT_FOR_ELEMENT_SECONDS = 60;
 
     public AbstractPage(WebDriver driver) {
         this.driver = driver;
@@ -26,17 +26,7 @@ abstract class AbstractPage {
 
     }
 
-    public void waitForElementInvisibilty(By locator){
-        new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.invisibilityOfElementLocated(locator));
-    }
-
-    /* //На данные момент непонятно как обработать этот код с использованием WebElement
-    protected void waitForElementPresent(WebElement locator){
-    new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.presenceOfAllElementsLocatedBy(locator));
-    }*/
-
     protected void waitForElementClickable(WebElement locator){
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.elementToBeClickable(locator));
     }
-
 }

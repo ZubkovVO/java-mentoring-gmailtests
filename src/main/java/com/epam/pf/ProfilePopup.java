@@ -27,6 +27,4 @@ public class ProfilePopup extends AbstractPage{
         signOut.click();
         return this;
     }
-
-
 }

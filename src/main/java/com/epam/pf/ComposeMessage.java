@@ -65,5 +65,4 @@ public class ComposeMessage extends MainMailPage{
         emailCloseAndSave.click();
         return this;
     }
-
 }

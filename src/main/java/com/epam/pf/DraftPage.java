@@ -16,10 +16,4 @@ public class DraftPage extends MainMailPage {
         driver.findElement(textLocator).click();
         return this;
     }
-
-
-
-
-
-
 }
