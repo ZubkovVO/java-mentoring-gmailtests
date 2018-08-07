@@ -1,6 +1,8 @@
 package com.epam.selenium;
 
 import com.epam.pf.*;
+import com.epam.utils.Screenshoter;
+import com.epam.utils.WebDriverSingleton;
 import org.openqa.selenium.By;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
@@ -9,13 +11,13 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import static com.epam.utils.WebDriverSingleton.kill;
-
 public class GmailTest{
 
     String emailTextString = "Some text";
     String emailSubjectString = "Hello world!";
     String sendEmailToString = "newTestAddressee@gmail.com";
+    String imageLink = "https://pbs.twimg.com/media/CrwtRNzXEAAzRob.jp";
+    String imageLink2 ="g";
 
     @Test(description = "Login test")
     public void testGmailLogin() throws FileNotFoundException, InterruptedException {
@@ -31,8 +33,16 @@ public class GmailTest{
     @Test(description = "Compose Email",dependsOnMethods = {"testGmailLogin"})
     public void testGmailSend() throws InterruptedException {
         ComposeMessage composeMessage = new ComposeMessage().findCompose().sendEmailTo(sendEmailToString).emailSubject(emailSubjectString).emailText(emailTextString);
-        composeMessage.emailClose();
+        composeMessage.insertImage();
         Thread.sleep(2000);
+        composeMessage.imageSource();
+        composeMessage.insertLink(imageLink);
+        Thread.sleep(2000);
+        composeMessage.insertLink(imageLink2);
+        Thread.sleep(2000);
+        composeMessage.addImage();
+        composeMessage.emailClose();
+
         //Assert.assertFalse(driver.findElements(By.xpath("//div[contains(@aria-label,'Отправить')]")).size()>0);
     }
 
@@ -45,12 +55,13 @@ public class GmailTest{
         Assert.assertTrue(driver.findElements(By.xpath("//div[text()='"+emailSubjectString+"']")).size()>0);
         Assert.assertEquals(driver.findElement(By.xpath("//div[@aria-label='Тело письма']")).getText(),emailTextString);*/
         new ComposeMessage().sendEmail();
-        new MainMailPage().openSent();
+        MainMailPage mainMailPage = new MainMailPage();
+        mainMailPage.openSent();
         new ProfilePopup().signOutOptions().signOut();
+        Thread.sleep(2000);
+        Screenshoter.takeScreenshot();
     }
 
     @AfterClass(description = "Close browser")
-    public void browserQuit() {
-        kill();
-    }
+    public void kill() { WebDriverSingleton.kill(); }
 }

@@ -19,7 +19,7 @@ abstract class AbstractPage {
         PageFactory.initElements(this.driver, this);
     }
 
-    protected void waitForElementVisible(WebElement locator){
+    public void waitForElementVisible(WebElement locator){
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.visibilityOfAllElements(locator));
     }
 
@@ -32,6 +32,10 @@ abstract class AbstractPage {
     protected void highlightElement(By locator) {
         WebElement element = driver.findElement(locator);
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", element);
+    }
+
+    protected void switchToFrame(int locator){
+        driver.switchTo().frame(locator);
     }
 
     protected void unHighlightElement(By locator) {

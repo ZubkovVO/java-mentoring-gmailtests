@@ -1,6 +1,7 @@
 package com.epam.utils;
 
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.concurrent.TimeUnit;
@@ -19,8 +20,10 @@ public class WebDriverSingleton {
     }
 
     private static WebDriver init() {
-        System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe");
-        WebDriver driver = new FirefoxDriver();
+        /*System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe");
+        WebDriver driver = new FirefoxDriver();*/
+        System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
