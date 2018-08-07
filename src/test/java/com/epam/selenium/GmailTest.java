@@ -2,11 +2,14 @@ package com.epam.selenium;
 
 import com.epam.pf.*;
 import org.openqa.selenium.By;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.Test;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+
+import static com.epam.utils.WebDriverSingleton.kill;
 
 public class GmailTest{
 
@@ -46,8 +49,8 @@ public class GmailTest{
         new ProfilePopup().signOutOptions().signOut();
     }
 
-    /*@AfterClass(description = "Close browser")
+    @AfterClass(description = "Close browser")
     public void browserQuit() {
-        driver.quit();
-    }*/
+        kill();
+    }
 }
