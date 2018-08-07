@@ -7,27 +7,12 @@ import org.openqa.selenium.support.FindBy;
 public class ComposeMessage extends MainMailPage{
 
     //локаторы бокового меню gmail
-    @FindBy(xpath = "//div[text()='Написать']")
-    private WebElement composeEmail;
-
-    @FindBy(name = "to")
-    private WebElement sendTo;
-
-    @FindBy(name= "subjectbox")
-    private WebElement emailSubject;
-
-    @FindBy(xpath = "//div[@aria-label='Тело письма']")
-    private WebElement emailText;
-
-    @FindBy(xpath = "//img[@aria-label='Сохранить и закрыть']")
-    private WebElement emailCloseAndSave;
-
-    @FindBy(xpath = "//div[contains(@aria-label,'Отправить')]")
-    private WebElement emailSend;
-
-    public ComposeMessage(WebDriver driver) {
-        super(driver);
-    }
+    @FindBy(xpath = "//div[text()='Написать']") private WebElement composeEmail;
+    @FindBy(name = "to") private WebElement sendTo;
+    @FindBy(name= "subjectbox") private WebElement emailSubject;
+    @FindBy(xpath = "//div[@aria-label='Тело письма']") private WebElement emailText;
+    @FindBy(xpath = "//img[@aria-label='Сохранить и закрыть']") private WebElement emailCloseAndSave;
+    @FindBy(xpath = "//div[contains(@aria-label,'Отправить')]") private WebElement emailSend;
 
     public ComposeMessage sendEmailTo(String addressee){
         waitForElementVisible(sendTo);
@@ -55,7 +40,7 @@ public class ComposeMessage extends MainMailPage{
     }
 
     public ComposeMessage sendEmail(){
-        waitForElementClickable(emailSend);
+        waitForElementVisible(emailSend);
         emailSend.click();
         return this;
     }
