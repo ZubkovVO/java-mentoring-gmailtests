@@ -22,7 +22,10 @@ public class ComposeMessage extends MainMailPage{
     @FindBy(id = ":p") private WebElement insertLink;
     @FindBy(id = "picker:ap:2") private WebElement addImage;
     @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Вставьте ссылку на изображение:'])[1]/following::li[1]") private WebElement error;
-
+    @FindBy(xpath = "//div[@command='+emoticon']") private WebElement insertSmile;
+    //Что это блин вообще за локаторы, почему он на нормальных не работает, ааааа .....
+    @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='😁'])[1]/following::button[1]") private WebElement happySmile;
+    @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Возобновить правку'])[1]/following::button[2]") private WebElement emoticons;
 
     public ComposeMessage sendEmailTo(String addressee){
         waitForElementVisible(sendTo);
@@ -47,6 +50,18 @@ public class ComposeMessage extends MainMailPage{
         insertImage.click();
         return this;
     }
+
+    public ComposeMessage insertSmile() throws InterruptedException {
+        waitForElementVisible(insertSmile);
+        insertSmile.click();
+        waitForElementClickable(emoticons);
+        emoticons.click();
+        waitForElementClickable(happySmile);
+        happySmile.click();
+        Thread.sleep(3000);
+        return this;
+    }
+
 
     public ComposeMessage imageSource() throws InterruptedException {
         Thread.sleep(2000);

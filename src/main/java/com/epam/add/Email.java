@@ -23,12 +23,14 @@ public class Email {
 
     public void compose() throws InterruptedException {
         ComposeMessage composeMessage = new ComposeMessage().findCompose().sendEmailTo(to).emailSubject(subject).emailText(body);
-        composeMessage.insertImage();
+        /*composeMessage.insertImage();
         composeMessage.imageSource();
         composeMessage.insertLink(imageLink);
         Thread.sleep(2000);
         composeMessage.insertLink(imageLink2);
-        composeMessage.addImage();
+        composeMessage.addImage();*/
+        composeMessage.insertSmile();
+
         composeMessage.emailClose();
     }
 

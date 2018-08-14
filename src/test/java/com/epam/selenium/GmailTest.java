@@ -1,6 +1,7 @@
 package com.epam.selenium;
 
 import com.epam.add.Email;
+import com.epam.pf.DraftPage;
 import org.testng.annotations.Test;
 
 public class GmailTest extends BaseTest{
@@ -19,5 +20,15 @@ public class GmailTest extends BaseTest{
     public void testCheckAndSend() throws InterruptedException {
         email.send();
     }
+
+    /*@Test(dependsOnMethods = {"testCheckAndSend"})
+    public void testDropToTrash() throws InterruptedException {
+        DraftPage draftPage = new DraftPage();
+        draftPage.emailDoppable(emailTextString);
+        Thread.sleep(3000);
+
+    }*/
+
+
 
 }
