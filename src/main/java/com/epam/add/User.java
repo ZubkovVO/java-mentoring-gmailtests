@@ -1,7 +1,6 @@
 package com.epam.add;
 
 import com.epam.pf.LoginPage;
-import com.epam.pf.PasswordPage;
 import com.epam.pf.ProfilePopup;
 
 public class User {
@@ -15,7 +14,7 @@ public class User {
     }
 
     public void signIn(){
-        new LoginPage().openPage().fillLoginInput(login).pressNextButton();
+        new LoginPage().openPage().enterLogin(login).pressNextButton();
         new PasswordPage().fillPasswordInput(password).pressNextButton();
     }
 

@@ -22,7 +22,7 @@ public class WebDriverSingleton {
     private static WebDriver init() {
         /*System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe");
         WebDriver driver = new FirefoxDriver();*/
-        System.setProperty("webdriver.chrome.driver", "C:\\Drivers\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
         WebDriver driver = new ChromeDriver();
 
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
