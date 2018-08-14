@@ -9,7 +9,7 @@ public class LoginPage extends AbstractPage {
 
     @FindBy(linkText = "Войти") private WebElement goToLoginPage;
     @FindBy(name = "login") private WebElement loginInput;
-    @FindBy(name = "password") private WebElement pwdInput;
+    @FindBy(name = "passwd") private WebElement pwdInput;
     @FindBy(xpath = "//button[@type='submit']") private WebElement nextButton;
 
     private static final String URL = "https://mail.yandex.ru/";
@@ -21,22 +21,26 @@ public class LoginPage extends AbstractPage {
 
     public LoginPage goToLoginPage(){
         waitForElementVisible(goToLoginPage);
+        goToLoginPage.click();
         return this;
     }
 
     public LoginPage enterLogin(String query){
+        waitForElementVisible(loginInput);
         loginInput.sendKeys(query);
         return this;
     }
 
-    public LoginPage enterPasswprd(String query){
+    public LoginPage enterPassword(String query){
         waitForElementVisible(pwdInput);
         pwdInput.sendKeys(query);
         return this;
     }
 
     public MainMailPage pressNextButton(){
+        waitForElementVisible(nextButton);
         nextButton.sendKeys(Keys.ENTER);
         return new MainMailPage();
     }
+
 }

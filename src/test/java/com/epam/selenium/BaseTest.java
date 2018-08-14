@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class BaseTest {
 
-    private static String login = "selenium.tester80@gmail.com";
+    private static String login = "selenium.tester80@yandex.ru";
     private static String password;
     static {
         try {
@@ -28,6 +28,7 @@ public class BaseTest {
     @BeforeTest(description = "User sign in")
     public void signIn(){
         user.signIn();
+        user.noPhone();
     }
 
     @AfterTest(description = "User sign out and browser close")

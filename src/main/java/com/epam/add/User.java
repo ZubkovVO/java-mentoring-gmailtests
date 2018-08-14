@@ -2,6 +2,7 @@ package com.epam.add;
 
 import com.epam.pf.LoginPage;
 import com.epam.pf.ProfilePopup;
+import com.epam.pf.RequestPhone;
 
 public class User {
 
@@ -14,8 +15,11 @@ public class User {
     }
 
     public void signIn(){
-        new LoginPage().openPage().enterLogin(login).pressNextButton();
-        new PasswordPage().fillPasswordInput(password).pressNextButton();
+        new LoginPage().openPage().goToLoginPage().enterLogin(login).enterPassword(password).pressNextButton();
+    }
+
+    public void noPhone(){
+        new RequestPhone().noPhone();
     }
 
     public void signOut() throws InterruptedException {
