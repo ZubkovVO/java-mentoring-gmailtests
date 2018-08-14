@@ -68,11 +68,6 @@ public class ComposeMessage extends MainMailPage{
     public ComposeMessage insertLink(String linkText) throws InterruptedException {
         waitForElementVisible(insertLink);
         insertLink.sendKeys(linkText);
-        //waitForElementVisible(error);
-       /* insertLink.sendKeys(Keys.chord(Keys.CONTROL,"a"));
-        insertLink.sendKeys(Keys.chord(Keys.CONTROL,"c"));
-        insertLink.clear();
-        insertLink.sendKeys(Keys.chord(Keys.CONTROL,"v"));*/
         return this;
     }
 
