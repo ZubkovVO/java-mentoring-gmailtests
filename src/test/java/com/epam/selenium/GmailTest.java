@@ -1,5 +1,7 @@
 package com.epam.selenium;
 
+import com.epam.add.ComposeEmail;
+import com.epam.add.Login;
 import com.epam.pf.*;
 import com.epam.utils.Screenshoter;
 import com.epam.utils.WebDriverSingleton;
@@ -13,35 +15,23 @@ import java.util.Scanner;
 
 public class GmailTest{
 
-    String emailTextString = "Some text";
-    String emailSubjectString = "Hello world!";
-    String sendEmailToString = "newTestAddressee@gmail.com";
-    String imageLink = "https://pbs.twimg.com/media/CrwtRNzXEAAzRob.jp";
-    String imageLink2 ="g";
+    private static String emailTextString = "Some text";
+    private static String emailSubjectString = "Hello world!";
+    private static String sendEmailToString = "newTestAddressee@gmail.com";
+    private static String login = "selenium.tester80@gmail.com";
+
 
     @Test(description = "Login test")
     public void testGmailLogin() throws FileNotFoundException, InterruptedException {
         String password = new Scanner(new File("/C:/Pwd/pwd.txt")).useDelimiter("\\Z").next();
-        new LoginPage().openPage().fillLoginInput("selenium.tester80@gmail.com").pressNextButton();
-        new PasswordPage().fillPasswordInput(password).pressNextButton();
-        MainMailPage mainMailPage = new MainMailPage();
-        mainMailPage.waitForElementVisibleBy(By.cssSelector("a[aria-label*='selenium.tester80@gmail.com']"));
-        //Assert.assertTrue(driver.findElements(By.cssSelector("a[aria-label*='selenium.tester80@gmail.com']")).size()>0);
+        new Login(login, password);
+             //Assert.assertTrue(driver.findElements(By.cssSelector("a[aria-label*='selenium.tester80@gmail.com']")).size()>0);
 
     }
 
     @Test(description = "Compose Email",dependsOnMethods = {"testGmailLogin"})
     public void testGmailSend() throws InterruptedException {
-        ComposeMessage composeMessage = new ComposeMessage().findCompose().sendEmailTo(sendEmailToString).emailSubject(emailSubjectString).emailText(emailTextString);
-        composeMessage.insertImage();
-        Thread.sleep(2000);
-        composeMessage.imageSource();
-        composeMessage.insertLink(imageLink);
-        Thread.sleep(2000);
-        composeMessage.insertLink(imageLink2);
-        Thread.sleep(2000);
-        composeMessage.addImage();
-        composeMessage.emailClose();
+        new ComposeEmail(sendEmailToString, emailSubjectString, emailTextString);
 
         //Assert.assertFalse(driver.findElements(By.xpath("//div[contains(@aria-label,'Отправить')]")).size()>0);
     }

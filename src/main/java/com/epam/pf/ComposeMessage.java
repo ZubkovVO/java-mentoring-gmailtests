@@ -1,9 +1,12 @@
 package com.epam.pf;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+
+import static org.openqa.selenium.Keys.CONTROL;
 
 public class ComposeMessage extends MainMailPage{
 
@@ -18,7 +21,7 @@ public class ComposeMessage extends MainMailPage{
     @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Загрузка'])[1]/following::div[2]") private WebElement imageSource; //"//div[@aria-label='Закрыть']"
     @FindBy(id = ":p") private WebElement insertLink;
     @FindBy(id = "picker:ap:2") private WebElement addImage;
-
+    @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Вставьте ссылку на изображение:'])[1]/following::li[1]") private WebElement error;
 
 
     public ComposeMessage sendEmailTo(String addressee){
@@ -62,9 +65,14 @@ public class ComposeMessage extends MainMailPage{
         return this;
     }
 
-    public ComposeMessage insertLink(String linkText){
+    public ComposeMessage insertLink(String linkText) throws InterruptedException {
         waitForElementVisible(insertLink);
         insertLink.sendKeys(linkText);
+        //waitForElementVisible(error);
+       /* insertLink.sendKeys(Keys.chord(Keys.CONTROL,"a"));
+        insertLink.sendKeys(Keys.chord(Keys.CONTROL,"c"));
+        insertLink.clear();
+        insertLink.sendKeys(Keys.chord(Keys.CONTROL,"v"));*/
         return this;
     }
 
