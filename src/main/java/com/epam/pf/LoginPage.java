@@ -13,10 +13,25 @@ public class LoginPage extends AbstractPage {
     @FindBy(name = "passwd") private WebElement pwdInput;
     @FindBy(xpath = "//button[@type='submit']") private WebElement nextButton;
 
-    private static final String URL = "https://mail.yandex.ru/";
 
-    public LoginPage openPage(){
+    @FindBy(linkText = "Sign in") private WebElement goToLoginDisk;
+
+    private static final String URL = "https://mail.yandex.ru/";
+    private static final String URLDISK = "https://disk.yandex.ru/";
+
+    public LoginPage openMailPage(){
         driver.get(URL);
+        return this;
+    }
+
+    public LoginPage openDiskPage(){
+        driver.get(URLDISK);
+        return this;
+    }
+
+    public LoginPage diskLogin(){
+        waitForElementVisible(goToLoginDisk);
+        goToLoginDisk.click();
         return this;
     }
 

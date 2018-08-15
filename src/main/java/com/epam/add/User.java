@@ -15,7 +15,11 @@ public class User {
     }
 
     public void signIn() {
-        new LoginPage().openPage().goToLoginPage().enterLogin(login).enterPassword(password).pressNextButton();
+        new LoginPage().openMailPage().goToLoginPage().enterLogin(login).enterPassword(password).pressNextButton();
+    }
+
+    public void signInToDisk() {
+        new LoginPage().openDiskPage().diskLogin().enterLogin(login).enterPassword(password).pressNextButton();
     }
 
     public void noPhone(){
@@ -24,6 +28,11 @@ public class User {
 
     public void signOut() throws InterruptedException {
         new ProfilePopup().signOutOptions().signOut();
+        Thread.sleep(2000);
+    }
+
+    public void signOutDisk() throws InterruptedException {
+        new ProfilePopup().signOutDiskOptions().signOutDisk();
         Thread.sleep(2000);
     }
 

@@ -10,7 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class GmailTest extends BaseTest{
+public class DiskTest extends BaseTest {
 
     private static String login = "selenium.tester80@yandex.ru";
     private static String password;
@@ -23,31 +23,14 @@ public class GmailTest extends BaseTest{
     }
     private static User user = new User(login, password);
 
-    private static String emailTextString = "Some text";
-    private static String emailSubjectString = "Hello world!";
-    private static String sendEmailToString = "newTestAddressee@gmail.com";
-    private static Email email = new Email(sendEmailToString, emailSubjectString, emailTextString);
-
     @Test(description = "Sign In")
     public void signIn(){
-        user.signIn();
-
-        //user.noPhone();
+        user.signInToDisk();
     }
 
-    @Test(description = "Compose Email", dependsOnMethods = {"signIn"})
-    public void testGmailCompose() throws InterruptedException {
-        email.compose();
-    }
-
-    @Test(description = "Check and Send email", dependsOnMethods = {"testGmailCompose"})
-    public void testCheckAndSend() throws InterruptedException {
-        email.send();
-    }
-
-    @Test(description = "Sign Out", dependsOnMethods = {"testCheckAndSend"})
+    @Test(description = "Sign Out")
     public void signOut() throws InterruptedException {
-        user.signOut();
+        user.signOutDisk();
         Screenshoter.takeScreenshot();
         WebDriverSingleton.kill();
     }

@@ -13,29 +13,4 @@ import java.util.Scanner;
 
 public class BaseTest {
 
-    private static String login = "selenium.tester80@yandex.ru";
-    private static String password;
-    static {
-        try {
-            password = new Scanner(new File("/C:/Pwd/pwd.txt")).useDelimiter("\\Z").next();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
-    private static User user = new User(login, password);
-
-
-    @BeforeTest(description = "User sign in")
-    public void signIn(){
-        user.signIn();
-        //user.noPhone();
-    }
-
-    @AfterTest(description = "User sign out and browser close")
-    public void signOut() throws InterruptedException {
-        user.signOut();
-        Screenshoter.takeScreenshot();
-        WebDriverSingleton.kill();
-    }
-
 }
