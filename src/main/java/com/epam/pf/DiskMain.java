@@ -10,8 +10,10 @@ public class DiskMain extends AbstractPage{
 //div[@class='listing-item__info']/ancestor::
     @FindBy(xpath = "//span[text()='1.txt']/ancestor::div[@class='listing-item__info']/preceding-sibling::div") private WebElement txtFile;
     @FindBy(xpath = "//span[text()='Корзина']") private WebElement trashCan;
-    @FindBy(xpath = "//span[text()='Горы.jpg']/ancestor::div[@class='listing-item__info']/preceding-sibling::div") private WebElement file1;
-    @FindBy(xpath = "//span[text()='Москва.jpg']/ancestor::div[@class='listing-item__info']/preceding-sibling::div") private WebElement file2;
+    @FindBy(xpath = "//span[text()='Горы.jpg']") private WebElement file1;
+    @FindBy(xpath = "//span[text()='Москва.jpg']") private WebElement file2;
+    @FindBy(xpath = "//div[@class='resources-action-bar__body']/following-sibling::span") private WebElement closeX;
+///sibling::span
 
 
 
@@ -33,6 +35,9 @@ public class DiskMain extends AbstractPage{
         highlightWebElement(file1);
         Screenshoter.takeScreenshot();
         new Actions(driver).clickAndHold(file1).moveToElement(file2).release().build().perform();
+        waitForElementVisible(closeX);
+        highlightWebElement(closeX);
+        closeX.click();
         Screenshoter.takeScreenshot();
         unHighlightWebElement(file1);
         return this;
