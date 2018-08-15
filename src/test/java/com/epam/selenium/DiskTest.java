@@ -2,6 +2,7 @@ package com.epam.selenium;
 
 import com.epam.add.Email;
 import com.epam.add.User;
+import com.epam.pf.UploadToDisk;
 import com.epam.utils.Screenshoter;
 import com.epam.utils.WebDriverSingleton;
 import org.testng.annotations.Test;
@@ -28,7 +29,16 @@ public class DiskTest extends BaseTest {
         user.signInToDisk();
     }
 
-    @Test(description = "Sign Out")
+    @Test(description = "Sign In", dependsOnMethods = {"signIn"})
+    public void uploadCheck() throws InterruptedException {
+        UploadToDisk upload = new UploadToDisk();
+        upload.uploadFile();
+
+    }
+
+
+
+    @Test(description = "Sign Out", dependsOnMethods = {"uploadCheck"})
     public void signOut() throws InterruptedException {
         user.signOutDisk();
         Screenshoter.takeScreenshot();
