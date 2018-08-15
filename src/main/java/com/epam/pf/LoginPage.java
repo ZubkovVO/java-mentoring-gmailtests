@@ -12,9 +12,7 @@ public class LoginPage extends AbstractPage {
     @FindBy(name = "login") private WebElement loginInput;
     @FindBy(name = "passwd") private WebElement pwdInput;
     @FindBy(xpath = "//button[@type='submit']") private WebElement nextButton;
-
-
-    @FindBy(linkText = "Sign in") private WebElement goToLoginDisk;
+    @FindBy(xpath= "//div[@class='header__row']/div[2]/a") private WebElement goToLoginDisk;
 
     private static final String URL = "https://mail.yandex.ru/";
     private static final String URLDISK = "https://disk.yandex.ru/";

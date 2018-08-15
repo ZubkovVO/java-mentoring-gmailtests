@@ -11,6 +11,11 @@ public class MainMailPage extends AbstractPage {
     @FindBy(css = "a[href*='#draft']") private WebElement gmailDrafts;
     @FindBy(css = "a[href*='#sent']") private WebElement gmailSent;
 
+    //getter for gmailInbox
+    public WebElement getGmailInbox(){
+        return this.gmailInbox;
+    }
+
     public MainMailPage openInbox(){
         waitForElementVisible(gmailInbox);
         gmailInbox.click();
@@ -21,10 +26,6 @@ public class MainMailPage extends AbstractPage {
         waitForElementVisible(gmailDrafts);
         gmailDrafts.click();
         return this;
-    }
-
-    public void assertT(){
-        Assert.assertTrue(gmailInbox.isDisplayed(),"Login Failed");
     }
 
     public MainMailPage openSent(){

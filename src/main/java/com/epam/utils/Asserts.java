@@ -8,11 +8,9 @@ import org.testng.Assert;
 
 public class Asserts {
 
-    @FindBy(css = "a[href*='#inbox']") private WebElement gmailInbox;
-
     public void successfulLogin(){
-        new MainMailPage().assertT();
-        //Boolean isPresent = WebDriver.findElements(gmailInbox).size() > 0;
+        Assert.assertTrue(new MainMailPage().getGmailInbox().isDisplayed(),"Login Failed");
+
     }
 
 }
