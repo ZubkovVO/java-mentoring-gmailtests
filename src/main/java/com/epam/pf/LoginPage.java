@@ -1,5 +1,6 @@
 package com.epam.pf;
 
+import com.epam.utils.Screenshoter;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -27,6 +28,8 @@ public class LoginPage extends AbstractPage {
 
     public LoginPage enterLogin(String query){
         waitForElementVisible(loginInput);
+        highlightWebElement(loginInput);
+        Screenshoter.takeScreenshot();
         loginInput.sendKeys(query);
         return this;
     }

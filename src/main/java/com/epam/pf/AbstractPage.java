@@ -38,6 +38,11 @@ abstract class AbstractPage {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", element);
     }
 
+    protected void highlightWebElement(WebElement locator){
+       ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", locator);
+
+    }
+
     protected void switchToFrame(int locator){
         driver.switchTo().frame(locator);
     }
