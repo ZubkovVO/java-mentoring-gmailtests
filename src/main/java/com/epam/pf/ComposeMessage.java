@@ -19,8 +19,9 @@ public class ComposeMessage extends MainMailPage{
     @FindBy(xpath = "//div[@role='textbox']") private WebElement emailText;
     @FindBy(css = "div[title*='Закрыть']") private WebElement emailCloseAndSave;
     @FindBy(xpath = "//span[text()='Сохранить и перейти']") private WebElement saveEmail;
-    @FindBy(xpath = "//div[contains(@aria-label,'Отправить')]") private WebElement emailSend;
-    @FindBy(xpath = "//div[@aria-label='Добавить фото']") private WebElement insertImage;
+
+    @FindBy(xpath = "//span[text()='Отправить']") private WebElement emailSend;
+    /*@FindBy(xpath = "//div[@aria-label='Добавить фото']") private WebElement insertImage;
     @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Загрузка'])[1]/following::div[2]") private WebElement imageSource; //"//div[@aria-label='Закрыть']"
     @FindBy(id = ":p") private WebElement insertLink;
     @FindBy(id = "picker:ap:2") private WebElement addImage;
@@ -28,7 +29,7 @@ public class ComposeMessage extends MainMailPage{
     @FindBy(xpath = "//div[@command='+emoticon']") private WebElement insertSmile;
     //Что это блин вообще за локаторы, почему он на нормальных не работает, ааааа .....
     @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='😁'])[1]/following::button[1]") private WebElement happySmile;
-    @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Возобновить правку'])[1]/following::button[2]") private WebElement emoticons;
+    @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Возобновить правку'])[1]/following::button[2]") private WebElement emoticons;*/
 
     public ComposeMessage sendEmailTo(String addressee){
         waitForElementVisible(sendTo);
@@ -49,7 +50,7 @@ public class ComposeMessage extends MainMailPage{
         return this;
     }
 
-    public ComposeMessage insertImage() {
+    /*public ComposeMessage insertImage() {
         waitForElementVisible(insertImage);
         insertImage.click();
         return this;
@@ -64,19 +65,19 @@ public class ComposeMessage extends MainMailPage{
         happySmile.click();
         Thread.sleep(3000);
         return this;
-    }
+    }*/
 
-
+/*
     public ComposeMessage imageSource() throws InterruptedException {
         Thread.sleep(2000);
         int size = driver.findElements(By.tagName("iframe")).size();
         System.out.println(size);
 
-        /*for(int i=0; i<=size; i++){
-            driver.switchTo().frame(i);
-            int total=driver.findElements(By.xpath("//div[@aria-label='Закрыть']")).size();
-            System.out.println(total);
-            driver.switchTo().defaultContent();}*/
+        //for(int i=0; i<=size; i++){
+          //  driver.switchTo().frame(i);
+            //int total=driver.findElements(By.xpath("//div[@aria-label='Закрыть']")).size();
+            //System.out.println(total);
+            //driver.switchTo().defaultContent();}
 
         driver.switchTo().frame(13);
         waitForElementVisible(imageSource);
@@ -94,7 +95,7 @@ public class ComposeMessage extends MainMailPage{
         waitForElementVisible(addImage);
         addImage.click();
         return this;
-    }
+    }*/
 
     public ComposeMessage findCompose() {
         waitForElementVisible(composeEmail);
