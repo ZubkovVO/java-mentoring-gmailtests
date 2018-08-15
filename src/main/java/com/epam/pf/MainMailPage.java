@@ -2,6 +2,7 @@ package com.epam.pf;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.testng.Assert;
 
 public class MainMailPage extends AbstractPage {
 
@@ -20,6 +21,10 @@ public class MainMailPage extends AbstractPage {
         waitForElementVisible(gmailDrafts);
         gmailDrafts.click();
         return this;
+    }
+
+    public void assertT(){
+        Assert.assertTrue(gmailInbox.isDisplayed(),"Login Failed");
     }
 
     public MainMailPage openSent(){

@@ -1,6 +1,7 @@
 package com.epam.add;
 
 import com.epam.pf.LoginPage;
+import com.epam.pf.MainMailPage;
 import com.epam.pf.ProfilePopup;
 import com.epam.pf.RequestPhone;
 
@@ -35,6 +36,5 @@ public class User {
         new ProfilePopup().signOutDiskOptions().signOutDisk();
         Thread.sleep(2000);
     }
-
 
 }

@@ -2,6 +2,7 @@ package com.epam.selenium;
 
 import com.epam.add.Email;
 import com.epam.add.User;
+import com.epam.utils.Asserts;
 import com.epam.utils.Screenshoter;
 import com.epam.utils.WebDriverSingleton;
 import org.testng.annotations.Test;
@@ -27,10 +28,13 @@ public class GmailTest extends BaseTest{
     private static String emailSubjectString = "Hello world!";
     private static String sendEmailToString = "newTestAddressee@gmail.com";
     private static Email email = new Email(sendEmailToString, emailSubjectString, emailTextString);
+    private static Asserts check = new Asserts();
+
 
     @Test(description = "Sign In")
     public void signIn(){
         user.signIn();
+        check.successfulLogin();
 
         //user.noPhone();
     }

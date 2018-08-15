@@ -16,7 +16,7 @@ public class UploadToDisk extends AbstractPage {
 
 
      public UploadToDisk uploadFile() throws InterruptedException {
-        /*waitForElementVisible(upload);  //ВОПРОС: Почему-то не цеплят клик если не использовать Actions
+        /*waitForElementVisible(upload);
         highlightWebElement(upload);
         Thread.sleep(2000);
         upload.sendKeys(new File("D:\\1.txt").getAbsolutePath());*/
