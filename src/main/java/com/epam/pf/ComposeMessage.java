@@ -19,7 +19,6 @@ public class ComposeMessage extends MainMailPage{
     @FindBy(xpath = "//div[@role='textbox']") private WebElement emailText;
     @FindBy(css = "div[title*='Закрыть']") private WebElement emailCloseAndSave;
     @FindBy(xpath = "//span[text()='Сохранить и перейти']") private WebElement saveEmail;
-
     @FindBy(xpath = "//span[text()='Отправить']") private WebElement emailSend;
     /*@FindBy(xpath = "//div[@aria-label='Добавить фото']") private WebElement insertImage;
     @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Загрузка'])[1]/following::div[2]") private WebElement imageSource; //"//div[@aria-label='Закрыть']"

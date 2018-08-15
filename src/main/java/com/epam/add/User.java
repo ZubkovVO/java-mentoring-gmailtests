@@ -14,7 +14,7 @@ public class User {
         this.password = password;
     }
 
-    public void signIn(){
+    public void signIn() {
         new LoginPage().openPage().goToLoginPage().enterLogin(login).enterPassword(password).pressNextButton();
     }
 

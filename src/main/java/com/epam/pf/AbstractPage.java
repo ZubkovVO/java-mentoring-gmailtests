@@ -43,6 +43,11 @@ abstract class AbstractPage {
 
     }
 
+    protected void clickWebElement(WebElement locator){
+        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", locator);
+
+    }
+
     protected void switchToFrame(int locator){
         driver.switchTo().frame(locator);
     }
