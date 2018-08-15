@@ -6,9 +6,9 @@ import org.openqa.selenium.support.FindBy;
 public class MainMailPage extends AbstractPage {
 
     //поиск ссылок по частичному совпадению, лучше решения не нашел для навигации по элементам на данном этапе
-    @FindBy(css = "a[href*='inbox']") private WebElement gmailInbox;
-    @FindBy(css = "a[href*='drafts']") private WebElement gmailDrafts;
-    @FindBy(css = "a[href*='sent']") private WebElement gmailSent;
+    @FindBy(css = "a[href*='#inbox']") private WebElement gmailInbox;
+    @FindBy(css = "a[href*='#drafts']") private WebElement gmailDrafts;
+    @FindBy(css = "a[href*='#sent']") private WebElement gmailSent;
 
     public MainMailPage openInbox(){
         waitForElementVisible(gmailInbox);

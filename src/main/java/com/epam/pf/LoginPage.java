@@ -28,8 +28,6 @@ public class LoginPage extends AbstractPage {
 
     public LoginPage enterLogin(String query){
         waitForElementVisible(loginInput);
-        highlightWebElement(loginInput);
-        Screenshoter.takeScreenshot();
         loginInput.sendKeys(query);
         return this;
     }

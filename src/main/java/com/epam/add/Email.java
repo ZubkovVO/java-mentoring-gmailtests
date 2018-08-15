@@ -29,8 +29,7 @@ public class Email {
         Thread.sleep(2000);
         composeMessage.insertLink(imageLink2);
         composeMessage.addImage();*/
-        composeMessage.insertSmile();
-
+        //composeMessage.insertSmile();
         composeMessage.emailClose();
     }
 

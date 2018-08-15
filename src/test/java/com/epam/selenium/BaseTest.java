@@ -28,7 +28,7 @@ public class BaseTest {
     @BeforeTest(description = "User sign in")
     public void signIn(){
         user.signIn();
-        user.noPhone();
+        //user.noPhone();
     }
 
     @AfterTest(description = "User sign out and browser close")
