@@ -50,9 +50,15 @@ abstract class AbstractPage {
         driver.switchTo().frame(locator);
     }
 
+
     protected void unHighlightElement(By locator) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", driver.findElement(locator));
     }
+
+    protected void unHighlightWebElement(WebElement locator) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", locator);
+    }
+
 
     //Пока не понял зачем это :)
     private ExpectedCondition<Boolean> isAjaxFinished() {

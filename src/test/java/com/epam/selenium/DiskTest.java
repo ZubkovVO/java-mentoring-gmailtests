@@ -1,7 +1,7 @@
 package com.epam.selenium;
 
-import com.epam.add.Email;
 import com.epam.add.User;
+import com.epam.pf.DiskMain;
 import com.epam.pf.UploadToDisk;
 import com.epam.utils.Screenshoter;
 import com.epam.utils.WebDriverSingleton;
@@ -23,22 +23,31 @@ public class DiskTest extends BaseTest {
         }
     }
     private static User user = new User(login, password);
+    private static DiskMain diskMain = new DiskMain();
 
     @Test(description = "Sign In")
     public void signIn(){
         user.signInToDisk();
     }
 
-    @Test(description = "Sign In", dependsOnMethods = {"signIn"})
+    @Test(description = "Upload", dependsOnMethods = {"signIn"})
     public void uploadCheck() throws InterruptedException {
         UploadToDisk upload = new UploadToDisk();
         upload.uploadFile();
+    }
 
+    @Test(description = "Delete File", dependsOnMethods = {"uploadCheck"})
+    public void deleteFiles() throws InterruptedException {
+        diskMain.deleteFile();
+    }
+
+    @Test(description = "Selecting Multiple Files", dependsOnMethods = {"deleteFiles"})
+    public void selectMultiple() throws InterruptedException {
+        diskMain.selectFiles();
     }
 
 
-
-    @Test(description = "Sign Out", dependsOnMethods = {"uploadCheck"})
+    @Test(description = "Sign Out", dependsOnMethods = {"selectMultiple"})
     public void signOut() throws InterruptedException {
         user.signOutDisk();
         Screenshoter.takeScreenshot();

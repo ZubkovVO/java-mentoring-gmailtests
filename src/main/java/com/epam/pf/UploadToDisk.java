@@ -9,20 +9,14 @@ import java.io.File;
 
 public class UploadToDisk extends AbstractPage {
 
-   // @FindBy(xpath = "//span[@class='button2__text']") private WebElement upload;
     @FindBy(css="input[class='upload-button__attach']") private WebElement upload;
     @FindBy(css="a[data-click-action='dialog.close']") private WebElement close;
 
 
 
      public UploadToDisk uploadFile() throws InterruptedException {
-        /*waitForElementVisible(upload);
-        highlightWebElement(upload);
-        Thread.sleep(2000);
-        upload.sendKeys(new File("D:\\1.txt").getAbsolutePath());*/
         driver.findElements(By.cssSelector("input.upload-button__attach")).get(0).
                 sendKeys(new File("D:\\1.txt").getAbsolutePath());
-
         waitForElementVisible(close);
         close.click();
 
