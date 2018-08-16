@@ -29,7 +29,6 @@ public class User {
 
     public void signOut() throws InterruptedException {
         new ProfilePopup().signOutOptions().signOut();
-        Thread.sleep(2000);
     }
 
     public void signOutDisk() throws InterruptedException {

@@ -3,6 +3,7 @@ package com.epam.pf;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import sun.applet.Main;
 
 public class ProfilePopup extends AbstractPage{
 
@@ -13,13 +14,11 @@ public class ProfilePopup extends AbstractPage{
     @FindBy(css = "a[href*='https://passport.yandex.ru']") private WebElement signOutDiskOptions;
     @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]") private WebElement signOutDisk;
 
-    public ProfilePopup signOutOptions() throws InterruptedException {
+    public ProfilePopup signOutOptions() {
         waitForElementClickable(signOutOptions);  //ВОПРОС: Почему-то не цеплят клик если не использовать Actions
         highlightWebElement(signOutOptions);
-        //clickWebElement(signOutOptions);
+        waitForElementVisible(new MainMailPage().getGmailInbox());//прогрузка элементов, для обеспечения корректного выхода
         new Actions(driver).click(signOutOptions).build().perform();
-        //Thread.sleep(1000);
-        //signOut.click();
         return this;
     }
 

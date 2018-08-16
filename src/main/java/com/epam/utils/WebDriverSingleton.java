@@ -5,8 +5,11 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import sun.security.krb5.internal.crypto.Des;
 
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
@@ -26,8 +29,14 @@ public class WebDriverSingleton {
     private static WebDriver init() {
         /*System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe");
         WebDriver driver = new FirefoxDriver();*/
-        System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
-        WebDriver driver = new ChromeDriver(getChromeDriverProfile());
+        //System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
+        //WebDriver driver = new ChromeDriver(getChromeDriverProfile());
+        WebDriver driver = null;
+        try {
+            driver = new RemoteWebDriver(new URL("http://127.0.0.1:5557/wd/hub"), DesiredCapabilities.chrome());
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
