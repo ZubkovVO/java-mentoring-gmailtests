@@ -35,22 +35,21 @@ public class GmailTest extends BaseTest{
     public void signIn(){
         user.signIn();
         check.successfulLogin();
-
         //user.noPhone();
     }
 
     @Test(description = "Compose Email", dependsOnMethods = {"signIn"})
-    public void testGmailCompose() throws InterruptedException {
+    public void testGmailCompose() {
         email.compose();
     }
 
     @Test(description = "Check and Send email", dependsOnMethods = {"testGmailCompose"})
-    public void testCheckAndSend() throws InterruptedException {
+    public void testCheckAndSend() {
         email.send();
     }
 
     @Test(description = "Sign Out", dependsOnMethods = {"testCheckAndSend"})
-    public void signOut() throws InterruptedException {
+    public void signOut() {
         user.signOut();
         Screenshoter.takeScreenshot();
         WebDriverSingleton.kill();

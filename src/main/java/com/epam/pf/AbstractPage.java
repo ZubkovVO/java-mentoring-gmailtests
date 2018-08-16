@@ -33,34 +33,18 @@ abstract class AbstractPage {
 
     }
 
-    protected void highlightElement(By locator) {
-        WebElement element = driver.findElement(locator);
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", element);
-    }
-
     protected void highlightWebElement(WebElement locator){
        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", locator);
-    }
-
-    protected void clickWebElement(WebElement locator){
-        ((JavascriptExecutor) driver).executeScript("arguments[0].click();", locator);
     }
 
     protected void switchToFrame(int locator){
         driver.switchTo().frame(locator);
     }
 
-
-    protected void unHighlightElement(By locator) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", driver.findElement(locator));
-    }
-
     protected void unHighlightWebElement(WebElement locator) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px'", locator);
     }
 
-
-    //Пока не понял зачем это :)
     private ExpectedCondition<Boolean> isAjaxFinished() {
         return new ExpectedCondition<Boolean>() {
             public Boolean apply(WebDriver driver) {

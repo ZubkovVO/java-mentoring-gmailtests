@@ -15,16 +15,15 @@ public class ProfilePopup extends AbstractPage{
     @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]") private WebElement signOutDisk;
 
     public ProfilePopup signOutOptions() {
-        waitForElementClickable(signOutOptions);  //ВОПРОС: Почему-то не цеплят клик если не использовать Actions
+        waitForElementClickable(signOutOptions);
         highlightWebElement(signOutOptions);
-        waitForElementVisible(new MainMailPage().getGmailInbox());//прогрузка элементов, для обеспечения корректного выхода
+        waitForElementVisible(new MainMailPage().getGmailInbox());
         new Actions(driver).click(signOutOptions).build().perform();
         return this;
     }
 
-    public ProfilePopup signOutDiskOptions() throws InterruptedException {
-        Thread.sleep(1000); //Опять та же фигня, что с signOutOptions, только тут Actions не спасает
-        waitForElementVisible(signOutDiskOptions);  //ВОПРОС: Почему-то не цеплят клик если не использовать Actions
+    public ProfilePopup signOutDiskOptions() {
+        waitForElementVisible(signOutDiskOptions);
         highlightWebElement(signOutDiskOptions);
         new Actions(driver).click(signOutDiskOptions).build().perform();
         return this;
@@ -33,9 +32,6 @@ public class ProfilePopup extends AbstractPage{
     public ProfilePopup signOutDisk(){
         waitForElementClickable(signOutDisk);
         signOutDisk.click();
-        //при появлении модального окна, оно закроется
-        /*alert = driver.switchTo().alert();
-        alert.accept();*/
         return this;
     }
 

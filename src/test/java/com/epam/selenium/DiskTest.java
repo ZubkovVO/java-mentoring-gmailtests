@@ -31,18 +31,18 @@ public class DiskTest extends BaseTest {
     }
 
     @Test(description = "Upload", dependsOnMethods = {"signIn"})
-    public void uploadCheck() throws InterruptedException {
+    public void uploadCheck() {
         UploadToDisk upload = new UploadToDisk();
         upload.uploadFile();
     }
 
     @Test(description = "Delete File", dependsOnMethods = {"uploadCheck"})
-    public void deleteFiles() throws InterruptedException {
+    public void deleteFiles() {
         diskMain.deleteFile();
     }
 
     @Test(description = "Selecting Multiple Files", dependsOnMethods = {"deleteFiles"})
-    public void selectMultiple() throws InterruptedException {
+    public void selectMultiple() {
         diskMain.selectFiles();
     }
 

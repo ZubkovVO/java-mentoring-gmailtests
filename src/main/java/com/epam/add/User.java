@@ -27,13 +27,12 @@ public class User {
         new RequestPhone().noPhone();
     }
 
-    public void signOut() throws InterruptedException {
+    public void signOut() {
         new ProfilePopup().signOutOptions().signOut();
     }
 
     public void signOutDisk() throws InterruptedException {
         new ProfilePopup().signOutDiskOptions().signOutDisk();
-        Thread.sleep(2000);
     }
 
 }

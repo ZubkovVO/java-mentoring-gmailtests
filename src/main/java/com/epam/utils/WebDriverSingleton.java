@@ -1,12 +1,9 @@
 package com.epam.utils;
 
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
-import sun.security.krb5.internal.crypto.Des;
 
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,8 +24,6 @@ public class WebDriverSingleton {
     }
 
     private static WebDriver init() {
-        /*System.setProperty("webdriver.gecko.driver", "C:\\Drivers\\geckodriver.exe");
-        WebDriver driver = new FirefoxDriver();*/
         //System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
         //WebDriver driver = new ChromeDriver(getChromeDriverProfile());
         WebDriver driver = null;
@@ -50,10 +45,7 @@ public class WebDriverSingleton {
         options.setExperimentalOption("prefs", chromePrefs);
         DesiredCapabilities capabilities = DesiredCapabilities.chrome();
         return capabilities;
-
     }
-
-
 
     public static void kill() {
         if (instance != null) {
