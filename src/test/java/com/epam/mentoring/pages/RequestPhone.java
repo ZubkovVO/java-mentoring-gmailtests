@@ -1,4 +1,4 @@
-package com.epam.pf;
+package com.epam.mentoring.pages;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;

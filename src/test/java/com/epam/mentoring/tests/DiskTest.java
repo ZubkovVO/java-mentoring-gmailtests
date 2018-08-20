@@ -1,10 +1,10 @@
-package com.epam.selenium;
+package com.epam.mentoring.tests;
 
-import com.epam.add.User;
-import com.epam.pf.DiskMain;
-import com.epam.pf.UploadToDisk;
-import com.epam.utils.Screenshoter;
-import com.epam.utils.WebDriverSingleton;
+import com.epam.mentoring.bo.User;
+import com.epam.mentoring.pages.DiskMain;
+import com.epam.mentoring.pages.UploadToDisk;
+import com.epam.mentoring.utils.Screenshoter;
+import com.epam.mentoring.utils.WebDriverSingleton;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -12,16 +12,12 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class DiskTest extends BaseTest {
+/*
+    private static String login = "tests.tester80@yandex.ru";
+    private static String password = "Administratum41";
 
-    private static String login = "selenium.tester80@yandex.ru";
-    private static String password;
-    static {
-        try {
-            password = new Scanner(new File("/C:/Pwd/pwd.txt")).useDelimiter("\\Z").next();
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
-    }
+    private static String url = "https://disk.yandex.ru/";
+
     private static User user = new User(login, password);
     private static DiskMain diskMain = new DiskMain();
 
@@ -53,6 +49,6 @@ public class DiskTest extends BaseTest {
         Screenshoter.takeScreenshot();
         WebDriverSingleton.kill();
     }
-
+*/
 
 }

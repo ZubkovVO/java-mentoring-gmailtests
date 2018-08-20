@@ -1,6 +1,6 @@
-package com.epam.pf;
+package com.epam.mentoring.pages;
 
-import com.epam.utils.Screenshoter;
+import com.epam.mentoring.utils.Screenshoter;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;

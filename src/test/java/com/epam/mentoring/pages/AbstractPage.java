@@ -1,6 +1,6 @@
-package com.epam.pf;
+package com.epam.mentoring.pages;
 
-import com.epam.utils.WebDriverSingleton;
+import com.epam.mentoring.utils.WebDriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;

@@ -1,9 +1,8 @@
-package com.epam.pf;
+package com.epam.mentoring.pages;
 
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
-import sun.applet.Main;
 
 public class ProfilePopup extends AbstractPage{
 

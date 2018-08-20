@@ -1,4 +1,4 @@
-package com.epam.utils;
+package com.epam.mentoring.utils;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;

@@ -1,4 +1,4 @@
-package com.epam.utils;
+package com.epam.mentoring.utils;
 
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;

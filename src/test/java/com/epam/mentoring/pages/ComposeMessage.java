@@ -1,5 +1,6 @@
-package com.epam.pf;
+package com.epam.mentoring.pages;
 
+import com.epam.mentoring.bo.Email;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -16,42 +17,26 @@ public class ComposeMessage extends MainMailPage{
     @FindBy(xpath = "//span[text()='Сохранить и перейти']") private WebElement saveEmail;
     @FindBy(xpath = "//span[text()='Отправить']") private WebElement emailSend;
 
-    public ComposeMessage sendEmailTo(String addressee){
+    public ComposeMessage composeEmail(Email email){
+        String recipient = email.getTo();
+        String subject = email.getSubject();
+        String body = email.getBody();
+
+        //Input recipient data
+        System.out.println("Typing recipient address " + recipient);
         waitForElementVisible(sendTo);
-        sendTo.sendKeys(addressee);
+        sendTo.sendKeys(recipient);
         sendTo.sendKeys(Keys.RETURN);
-        return this;
-    }
 
-    public ComposeMessage emailSubject(String subjectText){
+        //Input subject and body text
+        System.out.println("Typing subject " + subject);
         waitForElementClickable(emailSubject);
-        emailSubject.sendKeys(subjectText);
-        return this;
-    }
-
-    public ComposeMessage emailText(String bodyText){
+        emailSubject.sendKeys(subject);
+        System.out.println("Typing body " + body);
         waitForElementVisible(emailText);
-        emailText.sendKeys(bodyText);
+        emailText.sendKeys(body);
         return this;
     }
-
-/* //Поиск фрейма
-    public ComposeMessage imageSource() throws InterruptedException {
-        Thread.sleep(2000);
-        int size = driver.findElements(By.tagName("iframe")).size();
-        System.out.println(size);
-
-        //for(int i=0; i<=size; i++){
-          //  driver.switchTo().frame(i);
-            //int total=driver.findElements(By.xpath("//div[@aria-label='Закрыть']")).size();
-            //System.out.println(total);
-            //driver.switchTo().defaultContent();}
-
-        driver.switchTo().frame(13);
-        waitForElementVisible(imageSource);
-        imageSource.click();
-        return this;
-    }*/
 
     public ComposeMessage findCompose() {
         waitForElementVisible(composeEmail);
