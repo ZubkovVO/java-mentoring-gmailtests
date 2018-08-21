@@ -11,7 +11,7 @@ public class MainMailPage extends AbstractPage {
     @FindBy(css = "a[href*='#draft']") private WebElement gmailDrafts;
     @FindBy(css = "a[href*='#sent']") private WebElement gmailSent;
     @FindBy(css = "div[class='mail-User-Name']") private WebElement userName;
-    @FindBy(css = "span[class='user-account__name']") private WebElement userNameDisk;
+    @FindBy(css = "div.user-account>span.user-account__name") private WebElement userNameDisk;
 
     //getter for gmailInbox
     public WebElement getGmailInbox(){

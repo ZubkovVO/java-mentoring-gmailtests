@@ -62,4 +62,5 @@ abstract class AbstractPage {
     protected void waitForAjaxProcessed() {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(isAjaxFinished());
     }
+
 }

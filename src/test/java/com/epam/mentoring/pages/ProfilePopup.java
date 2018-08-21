@@ -10,7 +10,7 @@ public class ProfilePopup extends AbstractPage{
 
     @FindBy(xpath = "//div[text()='selenium.tester80']") private WebElement signOutOptions;
     @FindBy(xpath = "//a[text()='Выйти из сервисов Яндекса']") private WebElement signOut;
-    @FindBy(css = "a[href*='https://passport.yandex.ru']") private WebElement signOutDiskOptions;
+    @FindBy(css = "a.user-account>div.user-pic") private WebElement signOutDiskOptions;
     @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]") private WebElement signOutDisk;
     @FindBy(css = "div[class='resources-action-bar__body']") private WebElement actionBar;
     @FindBy(css = "a[href='https://mail.yandex.ru'") private WebElement check11;
@@ -24,15 +24,17 @@ public class ProfilePopup extends AbstractPage{
     }
 
     public ProfilePopup signOutDiskOptions() throws InterruptedException {
-        Thread.sleep(3000);
-        waitForElementVisible(check11);
-        //new Actions(driver).click(signOutDiskOptions).build().perform();
-        //while (elementExists("(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]")){
-        //    highlightWebElement(signOutDiskOptions);
-            signOutDiskOptions.click();
-        //}
+        waitForElementVisible(signOutDiskOptions);
+        waitForAjaxProcessed();
+        highlightWebElement(signOutDiskOptions);
+        new Actions(driver).click(signOutDiskOptions).build().perform();
         return this;
     }
+
+    //waitForElementVisible(check11);
+    //new Actions(driver).click(signOutDiskOptions).build().perform();
+    //while (elementExists("(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]")){
+    //    highlightWebElement(signOutDiskOptions);
 
     public ProfilePopup signOutDisk(){
         waitForElementClickable(signOutDisk);
