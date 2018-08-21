@@ -2,10 +2,9 @@ package com.epam.mentoring.tests;
 
 import com.epam.mentoring.bo.Email;
 import com.epam.mentoring.bo.User;
-import com.epam.mentoring.pages.ComposeMessage;
-import com.epam.mentoring.pages.DraftPage;
-import com.epam.mentoring.pages.LoginPage;
-import com.epam.mentoring.pages.MainMailPage;
+import com.epam.mentoring.pages.*;
+import com.epam.mentoring.utils.Screenshoter;
+import com.epam.mentoring.utils.WebDriverSingleton;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -19,6 +18,7 @@ public class GmailTest extends BaseTest{
     private static String to = "selenium.tester80@gmail.com";
     private static String subject = "Hello brother!";
     private static String body = "I was born later and I'm Russian";
+    private static ProfilePopup profile = new ProfilePopup();
 
     @Test(description = "Sign in to email")
     public void signIn(){
@@ -32,24 +32,24 @@ public class GmailTest extends BaseTest{
 
     @Test(description = "Compose Email", dependsOnMethods = {"signIn"})
     public void createAndSendEmail() {
+        //Compose new Email with defined params
         compose.findCompose().composeEmail(new Email(to,subject,body));
         compose.emailClose();
         mainPage.openDrafts();
         draftPage.emailTextFind(subject);
         mainPage.waitForElementVisible(mainPage.getGmailInbox());
         compose.sendEmail();
-        mainPage.openSent();
-        draftPage.emailTextFind(subject);
-        Assert.assertEquals(draftPage.emailCheck(subject),subject,"No email in Sent folder, please retry");
-        System.out.println("Login was completed correctly");
+
+        //Verify that the email was sent
+        Assert.assertEquals(draftPage.emailCheck(),"Письмо отправлено.","No email in Sent folder, please retry");
+        System.out.println("Email sent");
     }
 
-   /* @Test(description = "Sign Out", dependsOnMethods = {"testCheckAndSend"})
+    @Test(description = "Sign Out", dependsOnMethods = {"createAndSendEmail"})
     public void signOut() {
-        user.signOut();
+        profile.signOutOptions().signOut();
         Screenshoter.takeScreenshot();
         WebDriverSingleton.kill();
     }
-*/
 
 }

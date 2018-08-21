@@ -1,6 +1,7 @@
 package com.epam.mentoring.pages;
 
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 
 public class MainMailPage extends AbstractPage {
@@ -10,6 +11,7 @@ public class MainMailPage extends AbstractPage {
     @FindBy(css = "a[href*='#draft']") private WebElement gmailDrafts;
     @FindBy(css = "a[href*='#sent']") private WebElement gmailSent;
     @FindBy(css = "div[class='mail-User-Name']") private WebElement userName;
+    @FindBy(css = "span[class='user-account__name']") private WebElement userNameDisk;
 
     //getter for gmailInbox
     public WebElement getGmailInbox(){
@@ -37,6 +39,11 @@ public class MainMailPage extends AbstractPage {
     public String checkUser(){
         waitForElementVisible(userName);
         return userName.getText();
+    }
+
+    public String checkDiskUser(){
+        waitForElementVisible(userNameDisk);
+        return userNameDisk.getText();
     }
 
 }

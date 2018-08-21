@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 abstract class AbstractPage {
     protected WebDriver driver;
-    private static final int WAIT_FOR_ELEMENT_SECONDS = 30;
+    private static final int WAIT_FOR_ELEMENT_SECONDS = 10;
 
     public AbstractPage() {
         this.driver = WebDriverSingleton.getWebDriverInstance();
@@ -32,6 +32,12 @@ abstract class AbstractPage {
         new WebDriverWait(driver, WAIT_FOR_ELEMENT_SECONDS).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
 
     }
+
+    public boolean elementExists(String element){
+        boolean exists = driver.findElements(By.xpath(element)).isEmpty();
+        return exists;
+    }
+
 
     protected void highlightWebElement(WebElement locator){
        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", locator);

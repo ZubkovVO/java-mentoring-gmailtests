@@ -12,6 +12,8 @@ public class ProfilePopup extends AbstractPage{
     @FindBy(xpath = "//a[text()='Выйти из сервисов Яндекса']") private WebElement signOut;
     @FindBy(css = "a[href*='https://passport.yandex.ru']") private WebElement signOutDiskOptions;
     @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]") private WebElement signOutDisk;
+    @FindBy(css = "div[class='resources-action-bar__body']") private WebElement actionBar;
+    @FindBy(css = "a[href='https://mail.yandex.ru'") private WebElement check11;
 
     public ProfilePopup signOutOptions() {
         waitForElementClickable(signOutOptions);
@@ -21,10 +23,14 @@ public class ProfilePopup extends AbstractPage{
         return this;
     }
 
-    public ProfilePopup signOutDiskOptions() {
-        waitForElementVisible(signOutDiskOptions);
-        highlightWebElement(signOutDiskOptions);
-        new Actions(driver).click(signOutDiskOptions).build().perform();
+    public ProfilePopup signOutDiskOptions() throws InterruptedException {
+        Thread.sleep(3000);
+        waitForElementVisible(check11);
+        //new Actions(driver).click(signOutDiskOptions).build().perform();
+        //while (elementExists("(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]")){
+        //    highlightWebElement(signOutDiskOptions);
+            signOutDiskOptions.click();
+        //}
         return this;
     }
 
@@ -33,7 +39,6 @@ public class ProfilePopup extends AbstractPage{
         signOutDisk.click();
         return this;
     }
-
 
     public ProfilePopup signOut(){
         waitForElementClickable(signOut);

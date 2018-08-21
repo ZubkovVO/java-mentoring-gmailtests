@@ -1,10 +1,10 @@
 package com.epam.mentoring.tests;
 
 import com.epam.mentoring.bo.User;
-import com.epam.mentoring.pages.DiskMain;
-import com.epam.mentoring.pages.UploadToDisk;
+import com.epam.mentoring.pages.*;
 import com.epam.mentoring.utils.Screenshoter;
 import com.epam.mentoring.utils.WebDriverSingleton;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.io.File;
@@ -12,18 +12,25 @@ import java.io.FileNotFoundException;
 import java.util.Scanner;
 
 public class DiskTest extends BaseTest {
-/*
-    private static String login = "tests.tester80@yandex.ru";
-    private static String password = "Administratum41";
 
-    private static String url = "https://disk.yandex.ru/";
 
-    private static User user = new User(login, password);
+
+    private static LoginPage login = new LoginPage();
+    private static MainMailPage mainPage = new MainMailPage();
+    private static ProfilePopup profile = new ProfilePopup();
+    private static String URL = "https://disk.yandex.ru/";
     private static DiskMain diskMain = new DiskMain();
 
     @Test(description = "Sign In")
-    public void signIn(){
-        user.signInToDisk();
+    public void signIn() throws InterruptedException {
+             // Login via user defined method
+            login.openPage(URL).diskLogin().signIn(new User());
+            profile.signOutDiskOptions();
+
+            // Verify that the login was correct
+            Assert.assertEquals(new MainMailPage().checkDiskUser(), "selenium.tester80","It's seems you are NOT logged in correctly");
+            System.out.println("Login was completed correctly");
+
     }
 
     @Test(description = "Upload", dependsOnMethods = {"signIn"})
@@ -45,10 +52,10 @@ public class DiskTest extends BaseTest {
 
     @Test(description = "Sign Out", dependsOnMethods = {"selectMultiple"})
     public void signOut() throws InterruptedException {
-        user.signOutDisk();
+        profile.signOutDiskOptions().signOutDisk();
         Screenshoter.takeScreenshot();
         WebDriverSingleton.kill();
     }
-*/
+
 
 }

@@ -12,10 +12,12 @@ public class DraftPage extends MainMailPage {
         return this;
     }
 
-    public String emailCheck(String textCheck) {
-        By textLocator = By.xpath("//span[text()='" + textCheck + "']");
+    public String emailCheck() {
+        By textLocator = By.xpath("//div[text()='Письмо отправлено.']");
         waitForElementVisibleBy(textLocator);
-        return driver.findElement(textLocator).getText();
+        String text = driver.findElement(textLocator).getText();
+        System.out.println("Checking if the specific text is present on the page: " + text);
+        return text;
     }
 
 

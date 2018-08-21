@@ -14,24 +14,8 @@ public class User {
     public String getPassword() { return PASSWORD; }
 
     /*
-    public void signIn() {
-        new LoginPage().openPage().goToLoginPage().login(login).enterPassword(password).pressNextButton();
-    }
-
-    public void signInToDisk() {
-        new LoginPage().openDiskPage().diskLogin().enterLogin(login).enterPassword(password).pressNextButton();
-    }
-
     public void noPhone(){
         new RequestPhone().noPhone();
-    }
-
-    public void signOut() {
-        new ProfilePopup().signOutOptions().signOut();
-    }
-
-    public void signOutDisk() throws InterruptedException {
-        new ProfilePopup().signOutDiskOptions().signOutDisk();
     }
     */
 }
