@@ -1,0 +1,1 @@
+java -Dwebdriver.chrome.driver=d:\drivers\chromedriver.exe -jar selenium-server-standalone-3.14.0.jar -host 127.0.0.1 -role hub -port 4444

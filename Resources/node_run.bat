@@ -1,0 +1,1 @@
+java -Dwebdriver.chrome.driver=d:\drivers\chromedriver.exe -jar selenium-server-standalone-3.14.0.jar -role node -host 127.0.0.1 -hub http://127.0.0.1:4444/grid/register -browser “browserName=chrome,maxInstances=3,platform=WINDOWS” -port 5557
