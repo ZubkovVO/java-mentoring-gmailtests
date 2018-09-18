@@ -33,18 +33,8 @@ abstract class AbstractPage {
 
     }
 
-    public boolean elementExists(String element){
-        boolean exists = driver.findElements(By.xpath(element)).isEmpty();
-        return exists;
-    }
-
-
     protected void highlightWebElement(WebElement locator){
        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", locator);
-    }
-
-    protected void switchToFrame(int locator){
-        driver.switchTo().frame(locator);
     }
 
     protected void unHighlightWebElement(WebElement locator) {

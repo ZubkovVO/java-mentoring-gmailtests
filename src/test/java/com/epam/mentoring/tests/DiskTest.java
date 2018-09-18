@@ -7,10 +7,6 @@ import com.epam.mentoring.utils.WebDriverSingleton;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-
 public class DiskTest extends BaseTest {
 
 

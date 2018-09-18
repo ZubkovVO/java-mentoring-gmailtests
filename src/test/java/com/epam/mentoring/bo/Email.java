@@ -1,9 +1,5 @@
 package com.epam.mentoring.bo;
 
-import com.epam.mentoring.pages.ComposeMessage;
-import com.epam.mentoring.pages.DraftPage;
-import com.epam.mentoring.pages.MainMailPage;
-
 public class Email {
 
     private String to;
@@ -27,22 +23,4 @@ public class Email {
         this.subject = subject;
         this.body = body;
     }
-
-
-
-    /*
-
-    public void compose() {
-        ComposeMessage composeMessage = new ComposeMessage().findCompose().composeEmail(to).emailSubject(subject).emailText(body);
-        composeMessage.emailClose();
-    }
-
-    public void send() {
-        new MainMailPage().openDrafts();
-        new DraftPage().emailTextFind(body);
-        new MainMailPage().waitForElementVisible(new MainMailPage().getGmailInbox());
-        new ComposeMessage().sendEmail();
-        MainMailPage mainMailPage = new MainMailPage();
-        mainMailPage.openSent();
-    }*/
 }

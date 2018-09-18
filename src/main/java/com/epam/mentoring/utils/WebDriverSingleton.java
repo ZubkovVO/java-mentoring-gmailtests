@@ -24,8 +24,6 @@ public class WebDriverSingleton {
     }
 
     private static WebDriver init() {
-        //System.setProperty("webdriver.chrome.driver", "D:\\Drivers\\chromedriver.exe");
-        //WebDriver driver = new ChromeDriver(getChromeDriverProfile());
         WebDriver driver = null;
         try {
             driver = new RemoteWebDriver(new URL("http://127.0.0.1:5557/wd/hub"), DesiredCapabilities.chrome());

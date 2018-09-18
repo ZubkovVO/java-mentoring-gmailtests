@@ -31,11 +31,6 @@ public class ProfilePopup extends AbstractPage{
         return this;
     }
 
-    //waitForElementVisible(check11);
-    //new Actions(driver).click(signOutDiskOptions).build().perform();
-    //while (elementExists("(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]")){
-    //    highlightWebElement(signOutDiskOptions);
-
     public ProfilePopup signOutDisk(){
         waitForElementClickable(signOutDisk);
         signOutDisk.click();
