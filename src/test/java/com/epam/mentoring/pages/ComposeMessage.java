@@ -6,12 +6,12 @@ import org.openqa.selenium.By;
 public class ComposeMessage extends MainMailPage{
 
     //Yandex side menu locators
-    private static final By COMPOSE_EMAIL = By.cssSelector("a[href*='compose']");
+    private static final By COMPOSE_EMAIL = By.cssSelector("span.mail-ComposeButton-Text");
     private static final By SEND_TO = By.name("to");
     //sibling element
     private static final By EMAIL_SUBJECT = By.xpath("//div[text()='Тема']/following-sibling::div/input");
     private static final By EMAIL_TEXT = By.xpath("//div[@role='textbox']");
-    private static final By EMAIL_CLOSE_AND_SAVE = By.cssSelector("div[title*='Закрыть']");
+    private static final By EMAIL_CLOSE_AND_SAVE = By.xpath("//div[@title='Закрыть']");
     private static final By SAVE_EMAIL = By.xpath("//span[text()='Сохранить и перейти']");
     private static final By EMAIL_SEND = By.xpath("//span[text()='Отправить']");
 

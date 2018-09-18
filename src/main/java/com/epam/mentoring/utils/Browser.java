@@ -66,7 +66,7 @@ public class Browser {
     }
 
     public void waitForElementVisible(By locator){
-        new WebDriverWait(driver, WAIT_ELEMENT_TIMEOUT).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(locator));
+        new WebDriverWait(driver, WAIT_ELEMENT_TIMEOUT).until(ExpectedConditions.visibilityOfElementLocated(locator));
     }
 
     public void waitForElementClickable(WebElement locator){
@@ -103,7 +103,7 @@ public class Browser {
     }
 
     public void upload(final By locator, String path){
-        waitForElementVisible(locator);
+       // waitForElementVisible(locator);
         driver.findElements(locator).get(0).
                 sendKeys(new File(path).getAbsolutePath());
     }
