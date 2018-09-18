@@ -8,7 +8,7 @@ import com.epam.mentoring.utils.WebDriverSingleton;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class GmailTest extends BaseTest{
+public class GmailTest {
 
     private static String URL = "https://mail.yandex.ru/";
     private static LoginPage login = new LoginPage();
@@ -46,7 +46,7 @@ public class GmailTest extends BaseTest{
     }
 
     @Test(description = "Sign Out", dependsOnMethods = {"createAndSendEmail"})
-    public void signOut() {
+    public void signOut() throws InterruptedException {
         profile.signOutOptions().signOut();
         Screenshoter.takeScreenshot();
         WebDriverSingleton.kill();

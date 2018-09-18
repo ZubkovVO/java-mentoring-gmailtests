@@ -1,5 +1,6 @@
 package com.epam.mentoring.pages;
 
+import com.epam.mentoring.utils.DriverDecorator;
 import com.epam.mentoring.utils.WebDriverSingleton;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -16,6 +17,7 @@ abstract class AbstractPage {
 
     public AbstractPage() {
         this.driver = WebDriverSingleton.getWebDriverInstance();
+        driver = new DriverDecorator(driver);
         PageFactory.initElements(this.driver, this);
     }
 
@@ -33,18 +35,8 @@ abstract class AbstractPage {
 
     }
 
-    public boolean elementExists(String element){
-        boolean exists = driver.findElements(By.xpath(element)).isEmpty();
-        return exists;
-    }
-
-
     protected void highlightWebElement(WebElement locator){
        ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='3px solid green'", locator);
-    }
-
-    protected void switchToFrame(int locator){
-        driver.switchTo().frame(locator);
     }
 
     protected void unHighlightWebElement(WebElement locator) {

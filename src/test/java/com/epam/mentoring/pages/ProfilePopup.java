@@ -15,26 +15,24 @@ public class ProfilePopup extends AbstractPage{
     @FindBy(css = "div[class='resources-action-bar__body']") private WebElement actionBar;
     @FindBy(css = "a[href='https://mail.yandex.ru'") private WebElement check11;
 
-    public ProfilePopup signOutOptions() {
+    public ProfilePopup signOutOptions() throws InterruptedException {
+        Thread.sleep(2000);
+        //waitForAjaxProcessed();
         waitForElementClickable(signOutOptions);
         highlightWebElement(signOutOptions);
         waitForElementVisible(new MainMailPage().getGmailInbox());
         new Actions(driver).click(signOutOptions).build().perform();
+        Thread.sleep(2000);
         return this;
     }
 
-    public ProfilePopup signOutDiskOptions() throws InterruptedException {
+    public ProfilePopup signOutDiskOptions() {
         waitForElementVisible(signOutDiskOptions);
         waitForAjaxProcessed();
         highlightWebElement(signOutDiskOptions);
         new Actions(driver).click(signOutDiskOptions).build().perform();
         return this;
     }
-
-    //waitForElementVisible(check11);
-    //new Actions(driver).click(signOutDiskOptions).build().perform();
-    //while (elementExists("(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]")){
-    //    highlightWebElement(signOutDiskOptions);
 
     public ProfilePopup signOutDisk(){
         waitForElementClickable(signOutDisk);
