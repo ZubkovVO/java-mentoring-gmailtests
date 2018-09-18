@@ -2,8 +2,7 @@ package com.epam.mentoring.tests;
 
 import com.epam.mentoring.bo.User;
 import com.epam.mentoring.pages.*;
-import com.epam.mentoring.utils.Screenshoter;
-import com.epam.mentoring.utils.WebDriverSingleton;
+import com.epam.mentoring.utils.Browser;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -49,8 +48,7 @@ public class DiskTest extends BaseTest {
     @Test(description = "Sign Out", dependsOnMethods = {"selectMultiple"})
     public void signOut() throws InterruptedException {
         profile.signOutDiskOptions().signOutDisk();
-        Screenshoter.takeScreenshot();
-        WebDriverSingleton.kill();
+        Browser.kill();
     }
 
 

@@ -8,38 +8,40 @@ public class ProfilePopup extends AbstractPage{
 
     //Alert alert;  //обработка модальных окон браузера
 
-    @FindBy(xpath = "//div[text()='selenium.tester80']") private WebElement signOutOptions;
-    @FindBy(xpath = "//a[text()='Выйти из сервисов Яндекса']") private WebElement signOut;
-    @FindBy(css = "a.user-account>div.user-pic") private WebElement signOutDiskOptions;
-    @FindBy(xpath = "(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]") private WebElement signOutDisk;
-    @FindBy(css = "div[class='resources-action-bar__body']") private WebElement actionBar;
-    @FindBy(css = "a[href='https://mail.yandex.ru'") private WebElement check11;
+    private static final By SIGN_OUT_OPTIONS = By.xpath("//div[text()='selenium.tester80']");
+    private static final By SIGN_OUT = By.xpath("//a[text()='Выйти из сервисов Яндекса'");
+    private static final By SIGN_OUT_DISK_OPTIONS = By.cssSelector("a.user-account>div.user-pic");
+    private static final By SIGN_OUT_DISK = By.xpath("(.//*[normalize-space(text()) and normalize-space(.)='Управление аккаунтом'])[1]/following::a[1]");
+    private static final By ACTION_BAR = By.cssSelector("div[class='resources-action-bar__body']");
+    private static final By CHECK_11 = By.cssSelector("a[href='https://mail.yandex.ru'");
+
 
     public ProfilePopup signOutOptions() {
-        waitForElementClickable(signOutOptions);
+        browser.actionClick(SIGN_OUT_OPTIONS);
+        /*waitForElementClickable(signOutOptions);
         highlightWebElement(signOutOptions);
-        waitForElementVisible(new MainMailPage().getGmailInbox());
-        new Actions(driver).click(signOutOptions).build().perform();
+        waitForElementVisible(new MainMailPage().getInbox());
+        new Actions(driver).click(signOutOptions).build().perform();*/
         return this;
     }
 
     public ProfilePopup signOutDiskOptions() throws InterruptedException {
-        waitForElementVisible(signOutDiskOptions);
+        browser.waitForAjaxProcessed();
+        browser.actionClick(SIGN_OUT_DISK_OPTIONS);
+        /*waitForElementVisible(signOutDiskOptions);
         waitForAjaxProcessed();
         highlightWebElement(signOutDiskOptions);
-        new Actions(driver).click(signOutDiskOptions).build().perform();
+        new Actions(driver).click(signOutDiskOptions).build().perform();*/
         return this;
     }
 
     public ProfilePopup signOutDisk(){
-        waitForElementClickable(signOutDisk);
-        signOutDisk.click();
+        browser.click(SIGN_OUT_DISK);
         return this;
     }
 
     public ProfilePopup signOut(){
-        waitForElementClickable(signOut);
-        signOut.click();
+        browser.click(SIGN_OUT);
         //при появлении модального окна, оно закроется
         /*alert = driver.switchTo().alert();
         alert.accept();*/

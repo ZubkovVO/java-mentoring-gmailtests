@@ -3,8 +3,7 @@ package com.epam.mentoring.tests;
 import com.epam.mentoring.bo.Email;
 import com.epam.mentoring.bo.User;
 import com.epam.mentoring.pages.*;
-import com.epam.mentoring.utils.Screenshoter;
-import com.epam.mentoring.utils.WebDriverSingleton;
+import com.epam.mentoring.utils.Browser;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -37,7 +36,7 @@ public class GmailTest extends BaseTest{
         compose.emailClose();
         mainPage.openDrafts();
         draftPage.emailTextFind(subject);
-        mainPage.waitForElementVisible(mainPage.getGmailInbox());
+        //mainPage.waitForElementVisible(mainPage.getInbox());
         compose.sendEmail();
 
         //Verify that the email was sent
@@ -48,8 +47,7 @@ public class GmailTest extends BaseTest{
     @Test(description = "Sign Out", dependsOnMethods = {"createAndSendEmail"})
     public void signOut() {
         profile.signOutOptions().signOut();
-        Screenshoter.takeScreenshot();
-        WebDriverSingleton.kill();
+        Browser.kill();
     }
 
 }

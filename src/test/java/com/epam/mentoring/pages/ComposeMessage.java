@@ -1,21 +1,19 @@
 package com.epam.mentoring.pages;
 
 import com.epam.mentoring.bo.Email;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.By;
 
 public class ComposeMessage extends MainMailPage{
 
-    //локаторы бокового меню gmail
-    @FindBy(css = "a[href*='compose']") private WebElement composeEmail;
-    @FindBy(name = "to") private WebElement sendTo;
-    //мой первый собственный sibling элемент
-    @FindBy(xpath = "//div[text()='Тема']/following-sibling::div/input") private WebElement emailSubject;
-    @FindBy(xpath = "//div[@role='textbox']") private WebElement emailText;
-    @FindBy(css = "div[title*='Закрыть']") private WebElement emailCloseAndSave;
-    @FindBy(xpath = "//span[text()='Сохранить и перейти']") private WebElement saveEmail;
-    @FindBy(xpath = "//span[text()='Отправить']") private WebElement emailSend;
+    //Yandex side menu locators
+    private static final By COMPOSE_EMAIL = By.cssSelector("a[href*='compose']");
+    private static final By SEND_TO = By.name("to");
+    //sibling element
+    private static final By EMAIL_SUBJECT = By.xpath("//div[text()='Тема']/following-sibling::div/input");
+    private static final By EMAIL_TEXT = By.xpath("//div[@role='textbox']");
+    private static final By EMAIL_CLOSE_AND_SAVE = By.cssSelector("div[title*='Закрыть']");
+    private static final By SAVE_EMAIL = By.xpath("//span[text()='Сохранить и перейти']");
+    private static final By EMAIL_SEND = By.xpath("//span[text()='Отправить']");
 
     public ComposeMessage composeEmail(Email email){
         String recipient = email.getTo();
@@ -24,39 +22,31 @@ public class ComposeMessage extends MainMailPage{
 
         //Input recipient data
         System.out.println("Typing recipient address " + recipient);
-        waitForElementVisible(sendTo);
-        sendTo.sendKeys(recipient);
-        sendTo.sendKeys(Keys.RETURN);
+        browser.type(SEND_TO, recipient);
+        browser.sendKeys(SEND_TO);
 
         //Input subject and body text
         System.out.println("Typing subject " + subject);
-        waitForElementClickable(emailSubject);
-        emailSubject.sendKeys(subject);
+        browser.type(EMAIL_SUBJECT, subject);
+
         System.out.println("Typing body " + body);
-        waitForElementVisible(emailText);
-        emailText.sendKeys(body);
+        browser.type(EMAIL_TEXT, body);
         return this;
     }
 
     public ComposeMessage findCompose() {
-        waitForElementVisible(composeEmail);
-        composeEmail.click();
+        browser.click(COMPOSE_EMAIL);
         return this;
     }
 
     public ComposeMessage sendEmail(){
-        waitForElementVisible(emailSend);
-        emailSend.click();
+        browser.click(EMAIL_SEND);
         return this;
     }
 
     public ComposeMessage emailClose(){
-        waitForElementVisible(emailCloseAndSave);
-        highlightWebElement(emailCloseAndSave);
-        emailCloseAndSave.click();
-        waitForElementVisible(saveEmail);
-        highlightWebElement(saveEmail);
-        saveEmail.click();
+        browser.click(EMAIL_CLOSE_AND_SAVE);
+        browser.click(SAVE_EMAIL);
         return this;
     }
 }

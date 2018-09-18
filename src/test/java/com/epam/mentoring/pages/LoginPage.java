@@ -1,36 +1,30 @@
 package com.epam.mentoring.pages;
 
 import com.epam.mentoring.bo.User;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-
-import javax.swing.text.Highlighter;
+import org.openqa.selenium.By;
 
 public class LoginPage extends AbstractPage {
 
-    @FindBy(linkText = "Войти") private WebElement goToLoginPage;
-    @FindBy(xpath= "//div[@class='header__row']/div[2]/a") private WebElement goToLoginDisk;
-    @FindBy(name = "login") private WebElement loginInput;
-    @FindBy(name = "passwd") private WebElement pwdInput;
-    @FindBy(xpath = "//button[@type='submit']") private WebElement nextButton;
+    private static final By GO_TO_LOGIN_PAGE = By.linkText("Войти");
+    private static final By GO_TO_LOGIN_DISK = By.xpath("//div[@class='header__row']/div[2]/a");
+    private static final By LOGIN_INPUT = By.name("login");
+    private static final By PWD_INPUT = By.name("passwd");
+    private static final By NEXT_BUTTON = By.xpath("//button[@type='submit']");
 
-    private static final String URLDISK = "https://disk.yandex.ru/";
+    //private static final String URLDISK = "https://disk.yandex.ru/";
 
     public LoginPage openPage(String URL){
-        driver.get(URL);
+        browser.open(URL);
         return this;
     }
 
     public LoginPage diskLogin(){
-        waitForElementVisible(goToLoginDisk);
-        goToLoginDisk.click();
+        browser.click(GO_TO_LOGIN_DISK);
         return this;
     }
 
     public LoginPage goToLoginPage(){
-        waitForElementVisible(goToLoginPage);
-        goToLoginPage.click();
+        browser.click(GO_TO_LOGIN_PAGE);
         return this;
     }
 
@@ -41,18 +35,14 @@ public class LoginPage extends AbstractPage {
 
         //enter username
         System.out.println("Typing user login " + login);
-        waitForElementVisible(loginInput);
-        highlightWebElement(loginInput);
-        loginInput.sendKeys(login);
+        browser.type(LOGIN_INPUT, login);
 
         //enter password
         System.out.println("Typing password " + password);
-        waitForElementVisible(pwdInput);
-        pwdInput.sendKeys(password);
+        browser.type(PWD_INPUT, password);
 
         //press next button and go to the main page
-        waitForElementVisible(nextButton);
-        nextButton.sendKeys(Keys.ENTER);
+        browser.sendKeys(NEXT_BUTTON);
         return new MainMailPage();
     }
 }
