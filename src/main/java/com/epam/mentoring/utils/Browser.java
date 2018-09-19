@@ -98,7 +98,8 @@ public class Browser {
 
     public void sendKeys(final By locator){
         waitForElementVisible(locator);
-        driver.findElement(locator).sendKeys(Keys.RETURN);
+        WebDriver decoratedDriver = new WebDriverDecorator(driver);
+        decoratedDriver.findElement(locator).sendKeys(Keys.RETURN);
     }
 
     public void type(final By locator, String text) {

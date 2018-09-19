@@ -2,7 +2,7 @@ package pages;
 
 import org.openqa.selenium.By;
 
-public class DiskMain extends AbstractPage{
+public class DiskMain extends AbstractPage {
 
     private static final By TXT_FILE = By.xpath("//span[text()='1.txt']/ancestor::div[@class='listing-item__info']/preceding-sibling::div");
     private static final By TRASH_CAN = By.xpath("//span[text()='Корзина']");
@@ -11,7 +11,7 @@ public class DiskMain extends AbstractPage{
     private static final By CLOSE_X = By.xpath("//div[@class='resources-action-bar__body']/following-sibling::span");
 
 
-        public DiskMain deleteFile() {
+    public DiskMain deleteFile() {
         browser.dragAndDrop(TXT_FILE, TRASH_CAN);
         return this;
     }
