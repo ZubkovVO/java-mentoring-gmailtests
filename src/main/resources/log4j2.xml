@@ -9,16 +9,16 @@
             <PatternLayout
                     pattern="[%d{HH:mm:ss}] %-5p (%F) - %m%n"/>
         </File>
-        <ReportPortalLog4j2Appender name="ReportPortalAppender">
+       <!-- <ReportPortalLog4j2Appender name="ReportPortalAppender">
             <PatternLayout
                     pattern="[%d{HH:mm:ss}] %-5p (%F) - %m%n"/>
-        </ReportPortalLog4j2Appender>
+        </ReportPortalLog4j2Appender>-->
     </Appenders>
     <Loggers>
         <Root level="DEBUG">
             <AppenderRef ref="ConsoleAppender"/>
             <AppenderRef ref="FileAppender"/>
-            <AppenderRef ref="ReportPortalAppender"/>
+            <!--<AppenderRef ref="ReportPortalAppender"/>-->
         </Root>
     </Loggers>
 </Configuration>

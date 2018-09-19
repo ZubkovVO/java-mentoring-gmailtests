@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit;
 
 public class Browser {
 
-    private static final int WAIT_ELEMENT_TIMEOUT = 10;
+    private static final int WAIT_ELEMENT_TIMEOUT = 20;
     private static final String SCREENSHOTS_NAME_TPL = "screenshots/scr";
     private WebDriver driver;
     private static Browser instance = null;
@@ -36,7 +36,7 @@ public class Browser {
     private static Browser init() {
         WebDriver driver = null;
         try {
-            driver = WebDriverFactory.createWebDriver("Firefox");
+            driver = WebDriverFactory.createWebDriver("Chrome");
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
