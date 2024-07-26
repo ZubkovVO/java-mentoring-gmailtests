@@ -1,1 +1,1 @@
-Java Automation Training
+<b> Java Automation Training </b> 
